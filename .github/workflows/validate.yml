@@ -1,0 +1,37 @@
+name: Validate Revalida database
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Validate JavaScript syntax
+        run: node --check questoes.js
+      - name: Validate database structure
+        run: |
+          node <<'NODE'
+          const { edicoes, questoes } = require('./questoes.js');
+          if (!Array.isArray(edicoes) || !Array.isArray(questoes)) throw new Error('edicoes/questoes inválidos');
+          const ids = new Set();
+          for (const q of questoes) {
+            for (const key of ['id','numero','edicao','grupo','subgrupo','tema','text','options','gabarito','tags','tipo']) {
+              if (!(key in q)) throw new Error('Campo ausente: ' + key + ' em ' + JSON.stringify(q));
+            }
+            if (!Array.isArray(q.options) || q.options.length === 0) throw new Error('Alternativas inválidas: ' + q.id);
+            if (!Array.isArray(q.tags)) throw new Error('Tags inválidas: ' + q.id);
+            if (ids.has(q.id)) throw new Error('ID duplicado: ' + q.id);
+            ids.add(q.id);
+            if (!edicoes.some(e => e.nome === q.edicao)) throw new Error('Edição não catalogada: ' + q.edicao);
+          }
+          for (const e of edicoes) {
+            if (e.objetivasEsperadas !== 100) throw new Error('Expectativa inválida em ' + e.nome);
+          }
+          console.log('OK:', questoes.length, 'questões;', edicoes.length, 'edições.');
+          NODE
