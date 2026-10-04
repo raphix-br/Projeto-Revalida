@@ -15,7 +15,7 @@ jobs:
           pdftotext -bbox-layout "provas/2025/2025-1/2025_1_PV_objetiva_regular.pdf" /tmp/prova.xml
       - name: Reconstruct two-column questions
         run: |
-          python3 - <<'PY'
+          echo '--- XML HEAD ---'; head -40 /tmp/prova.xml; echo '--- END HEAD ---'; python3 - <<'PY
           import xml.etree.ElementTree as ET, json, re
           root=ET.parse('/tmp/prova.xml').getroot()
           questions=[]
