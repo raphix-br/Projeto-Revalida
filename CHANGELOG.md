@@ -1,3 +1,16 @@
+## v0.5.0 — Questões 2025/1 disponíveis
+- Importadas as **100 questões objetivas de 2025/1** diretamente do caderno oficial do INEP presente no repositório.
+- Cada questão agora possui **enunciado, quatro alternativas, página original e gabarito definitivo**.
+- Q7 e Q23 permanecem corretamente marcadas como anuladas.
+- As rotas permanentes `2025/2025.1/q001` até `q100` agora exibem o conteúdo da questão.
+- A página individual mantém link para a página correspondente do caderno oficial, permitindo conferir figuras, tabelas e elementos gráficos.
+- A fila da edição passou a exibir os enunciados importados.
+- Corrigidos artefatos de extração de caracteres sobrescritos/subscritos identificados durante a importação.
+- Criada rotina automatizada de reconstrução das duas colunas do PDF para evitar mistura entre questões.
+- Atualizada a validação automática do banco para o novo formato de enunciado + alternativas.
+- Versão do projeto atualizada para **v0.5.0**.
+- A edição 2025/2 continua no escopo, mas ainda não foi preenchida com conteúdo definitivo.
+
 ## v0.4.2 — Identificação das 100 questões de 2025/1
 - Identificadas as **100 questões objetivas** da edição 2025/1 em `questoes.js`.
 - Cada registro foi associado à edição, número da questão, gabarito definitivo e indicação de anulação.
