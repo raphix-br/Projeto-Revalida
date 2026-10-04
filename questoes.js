@@ -2311,8 +2311,8 @@ const questoes = [
   {
     "edicao": "2025/2",
     "numero": 20,
-    "gabarito": "C",
-    "gabaritoPreliminar": "C",
+    "gabarito": "B",
+    "gabaritoPreliminar": "B",
     "anulada": false,
     "status": "importada-preliminar",
     "fonte": "INEP — Caderno 01 / gabarito preliminar 2025/2",
@@ -2330,8 +2330,8 @@ const questoes = [
   {
     "edicao": "2025/2",
     "numero": 21,
-    "gabarito": "A",
-    "gabaritoPreliminar": "A",
+    "gabarito": "C",
+    "gabaritoPreliminar": "C",
     "anulada": false,
     "status": "importada-preliminar",
     "fonte": "INEP — Caderno 01 / gabarito preliminar 2025/2",
@@ -2349,8 +2349,8 @@ const questoes = [
   {
     "edicao": "2025/2",
     "numero": 22,
-    "gabarito": "A",
-    "gabaritoPreliminar": "A",
+    "gabarito": "D",
+    "gabaritoPreliminar": "D",
     "anulada": false,
     "status": "importada-preliminar",
     "fonte": "INEP — Caderno 01 / gabarito preliminar 2025/2",
@@ -2368,8 +2368,8 @@ const questoes = [
   {
     "edicao": "2025/2",
     "numero": 23,
-    "gabarito": "B",
-    "gabaritoPreliminar": "B",
+    "gabarito": "D",
+    "gabaritoPreliminar": "D",
     "anulada": false,
     "status": "importada-preliminar",
     "fonte": "INEP — Caderno 01 / gabarito preliminar 2025/2",
@@ -2387,8 +2387,8 @@ const questoes = [
   {
     "edicao": "2025/2",
     "numero": 24,
-    "gabarito": "D",
-    "gabaritoPreliminar": "D",
+    "gabarito": "B",
+    "gabaritoPreliminar": "B",
     "anulada": false,
     "status": "importada-preliminar",
     "fonte": "INEP — Caderno 01 / gabarito preliminar 2025/2",
@@ -2406,8 +2406,8 @@ const questoes = [
   {
     "edicao": "2025/2",
     "numero": 25,
-    "gabarito": "A",
-    "gabaritoPreliminar": "A",
+    "gabarito": "B",
+    "gabaritoPreliminar": "B",
     "anulada": false,
     "status": "importada-preliminar",
     "fonte": "INEP — Caderno 01 / gabarito preliminar 2025/2",
@@ -2444,8 +2444,8 @@ const questoes = [
   {
     "edicao": "2025/2",
     "numero": 27,
-    "gabarito": "D",
-    "gabaritoPreliminar": "D",
+    "gabarito": "C",
+    "gabaritoPreliminar": "C",
     "anulada": false,
     "status": "importada-preliminar",
     "fonte": "INEP — Caderno 01 / gabarito preliminar 2025/2",
@@ -2463,8 +2463,8 @@ const questoes = [
   {
     "edicao": "2025/2",
     "numero": 28,
-    "gabarito": "B",
-    "gabaritoPreliminar": "B",
+    "gabarito": "D",
+    "gabaritoPreliminar": "D",
     "anulada": false,
     "status": "importada-preliminar",
     "fonte": "INEP — Caderno 01 / gabarito preliminar 2025/2",
@@ -2482,8 +2482,8 @@ const questoes = [
   {
     "edicao": "2025/2",
     "numero": 29,
-    "gabarito": "A",
-    "gabaritoPreliminar": "A",
+    "gabarito": "B",
+    "gabaritoPreliminar": "B",
     "anulada": false,
     "status": "importada-preliminar",
     "fonte": "INEP — Caderno 01 / gabarito preliminar 2025/2",
@@ -2539,8 +2539,8 @@ const questoes = [
   {
     "edicao": "2025/2",
     "numero": 32,
-    "gabarito": "D",
-    "gabaritoPreliminar": "D",
+    "gabarito": "C",
+    "gabaritoPreliminar": "C",
     "anulada": false,
     "status": "importada-preliminar",
     "fonte": "INEP — Caderno 01 / gabarito preliminar 2025/2",
@@ -2596,8 +2596,8 @@ const questoes = [
   {
     "edicao": "2025/2",
     "numero": 35,
-    "gabarito": "D",
-    "gabaritoPreliminar": "D",
+    "gabarito": "B",
+    "gabaritoPreliminar": "B",
     "anulada": false,
     "status": "importada-preliminar",
     "fonte": "INEP — Caderno 01 / gabarito preliminar 2025/2",
@@ -2615,8 +2615,8 @@ const questoes = [
   {
     "edicao": "2025/2",
     "numero": 36,
-    "gabarito": "C",
-    "gabaritoPreliminar": "C",
+    "gabarito": "B",
+    "gabaritoPreliminar": "B",
     "anulada": false,
     "status": "importada-preliminar",
     "fonte": "INEP — Caderno 01 / gabarito preliminar 2025/2",
@@ -2634,8 +2634,8 @@ const questoes = [
   {
     "edicao": "2025/2",
     "numero": 37,
-    "gabarito": "D",
-    "gabaritoPreliminar": "D",
+    "gabarito": "C",
+    "gabaritoPreliminar": "C",
     "anulada": false,
     "status": "importada-preliminar",
     "fonte": "INEP — Caderno 01 / gabarito preliminar 2025/2",
@@ -2653,8 +2653,8 @@ const questoes = [
   {
     "edicao": "2025/2",
     "numero": 38,
-    "gabarito": "D",
-    "gabaritoPreliminar": "D",
+    "gabarito": "A",
+    "gabaritoPreliminar": "A",
     "anulada": false,
     "status": "importada-preliminar",
     "fonte": "INEP — Caderno 01 / gabarito preliminar 2025/2",
@@ -2672,8 +2672,8 @@ const questoes = [
   {
     "edicao": "2025/2",
     "numero": 39,
-    "gabarito": "D",
-    "gabaritoPreliminar": "D",
+    "gabarito": "C",
+    "gabaritoPreliminar": "C",
     "anulada": false,
     "status": "importada-preliminar",
     "fonte": "INEP — Caderno 01 / gabarito preliminar 2025/2",
@@ -2691,8 +2691,8 @@ const questoes = [
   {
     "edicao": "2025/2",
     "numero": 40,
-    "gabarito": "B",
-    "gabaritoPreliminar": "B",
+    "gabarito": "D",
+    "gabaritoPreliminar": "D",
     "anulada": false,
     "status": "importada-preliminar",
     "fonte": "INEP — Caderno 01 / gabarito preliminar 2025/2",
@@ -2729,8 +2729,8 @@ const questoes = [
   {
     "edicao": "2025/2",
     "numero": 42,
-    "gabarito": "D",
-    "gabaritoPreliminar": "D",
+    "gabarito": "A",
+    "gabaritoPreliminar": "A",
     "anulada": false,
     "status": "importada-preliminar",
     "fonte": "INEP — Caderno 01 / gabarito preliminar 2025/2",
@@ -2749,7 +2749,7 @@ const questoes = [
     "edicao": "2025/2",
     "numero": 43,
     "gabarito": "-",
-    "gabaritoPreliminar": "D",
+    "gabaritoPreliminar": "C",
     "anulada": true,
     "status": "importada-preliminar",
     "fonte": "INEP — Caderno 01 / gabarito preliminar 2025/2",
@@ -3660,8 +3660,8 @@ const questoes = [
   {
     "edicao": "2025/2",
     "numero": 91,
-    "gabarito": "A",
-    "gabaritoPreliminar": "A",
+    "gabarito": "D",
+    "gabaritoPreliminar": "D",
     "anulada": false,
     "status": "importada-preliminar",
     "fonte": "INEP — Caderno 01 / gabarito preliminar 2025/2",
@@ -3698,8 +3698,8 @@ const questoes = [
   {
     "edicao": "2025/2",
     "numero": 93,
-    "gabarito": "B",
-    "gabaritoPreliminar": "B",
+    "gabarito": "A",
+    "gabaritoPreliminar": "A",
     "anulada": false,
     "status": "importada-preliminar",
     "fonte": "INEP — Caderno 01 / gabarito preliminar 2025/2",
@@ -3717,8 +3717,8 @@ const questoes = [
   {
     "edicao": "2025/2",
     "numero": 94,
-    "gabarito": "C",
-    "gabaritoPreliminar": "C",
+    "gabarito": "B",
+    "gabaritoPreliminar": "B",
     "anulada": false,
     "status": "importada-preliminar",
     "fonte": "INEP — Caderno 01 / gabarito preliminar 2025/2",
@@ -3755,8 +3755,8 @@ const questoes = [
   {
     "edicao": "2025/2",
     "numero": 96,
-    "gabarito": "A",
-    "gabaritoPreliminar": "A",
+    "gabarito": "C",
+    "gabaritoPreliminar": "C",
     "anulada": false,
     "status": "importada-preliminar",
     "fonte": "INEP — Caderno 01 / gabarito preliminar 2025/2",
@@ -3812,8 +3812,8 @@ const questoes = [
   {
     "edicao": "2025/2",
     "numero": 99,
-    "gabarito": "B",
-    "gabaritoPreliminar": "B",
+    "gabarito": "A",
+    "gabaritoPreliminar": "A",
     "anulada": false,
     "status": "importada-preliminar",
     "fonte": "INEP — Caderno 01 / gabarito preliminar 2025/2",
@@ -3841,11 +3841,13 @@ const questoes = [
       "A": "Dermatite de contato; tratamento tópico e eliminação do foco alérgico; orientação para uso de calçados adequados e meias de algodão.",
       "B": "Tungíase; retirada manual dos parasitas, seguida de tratamento tópico e sistêmico; orientação para uso de calçados, evitando a área próxima aos chiqueiros.",
       "C": "Escabiose; limpeza diária e tratamento sistêmico, fornecimento de atestado para a escola; orientação de realizar controle ambiental até a eliminação do parasita.",
-      "D": "Esporotricose; o caso deve ser encaminhado a um serviço de dermatologia para realização de biópsia das lesões para a confirmação do diagnóstico; orientação de aguardar o resultado do exame. ÁREA LIVRE"
+      "D": "Esporotricose; o caso deve ser encaminhado a um serviço de dermatologia para realização de biópsia das lesões para a confirmação do diagnóstico; orientação de aguardar o resultado do exame."
     },
-    "revisaoVisual": false
+    "revisaoVisual": false,
+    "gabaritoPreliminar": "B",
+    "gabarito": "B"
   }
-]; 
+];
 
 // Conteúdos futuros não fazem parte do banco de questões.
 const treinamentos = [
