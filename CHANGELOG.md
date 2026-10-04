@@ -1,5 +1,19 @@
 # CHANGELOG — Projeto Revalida
 
+## v0.2.1 — Validação do gabarito oficial 2025/1
+
+### Alterado
+- Criado o registro central `gabaritosOficiais` para a edição 2025/1, contendo as 100 respostas do gabarito definitivo do Inep.
+- Os gabaritos das questões já presentes no banco foram alinhados ao gabarito definitivo oficial.
+- As questões existentes receberam o estado `gabarito_oficial_validado_conteudo_pendente`.
+- A validação foi deliberadamente separada em duas etapas: **gabarito oficial** e **conteúdo da questão**.
+- O conteúdo textual das questões existentes **não foi marcado como validado** nesta etapa.
+- A edição 2025/1 continua parcial: 50 questões estão armazenadas no banco; as questões 51–100 ainda precisam ser incorporadas com conteúdo conferido.
+- As questões 7, 23 e 34 constam como anuladas no gabarito definitivo oficial.
+
+### Fonte
+- Gabarito definitivo oficial do Inep para a prova objetiva 2025/1.
+
 ## v0.2.0 — Estrutura do Banco de Questões
 
 ### Alterado
