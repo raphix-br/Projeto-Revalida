@@ -19,9 +19,9 @@ jobs:
           import xml.etree.ElementTree as ET, json, re
           root=ET.parse('/tmp/prova.xml').getroot()
           questions=[]
-          for page_no,page in enumerate(root.findall('.//page'),1):
+          for page_no,page in enumerate(root.findall('.//{*}page'),1):
               words=[]
-              for w in page.findall('.//word'):
+              for w in page.findall('.//{*}word'):
                   try: x=float(w.attrib['xMin']); y=float(w.attrib['yMin'])
                   except: continue
                   words.append((y,x,w.text or ''))
