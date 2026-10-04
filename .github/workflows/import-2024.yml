@@ -14,7 +14,7 @@ jobs:
         run: |
           set -e
           mkdir -p provas/2024/2024-1 provas/2024/2024-2
-          curl -k -L --fail --show-error "https://download.inep.gov.br/revalida/provas_e_gabaritos/2024_1_PV_objetiva_regular.pdf" -o provas/2024/2024-1/2024_1_PV_objetiva_regular.pdf
+          curl -L --retry 5 --retry-delay 2 --fail --show-error "http://download.inep.gov.br/revalida/provas_e_gabaritos/2024_1_PV_objetiva_regular.pdf" -o provas/2024/2024-1/2024_1_PV_objetiva_regular.pdf
           curl -k -L --fail --show-error "https://download.inep.gov.br/revalida/provas_e_gabaritos/2024_2_PV_objetiva_regular.pdf" -o provas/2024/2024-2/2024_2_PV_objetiva_regular.pdf
           ls -lh provas/2024/2024-1/*.pdf provas/2024/2024-2/*.pdf
           git config user.name "github-actions[bot]"
