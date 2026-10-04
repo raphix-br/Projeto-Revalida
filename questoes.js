@@ -50,7 +50,908 @@ const edicoes = [
   { id: "2026-2", nome: "2026/2", ano: 2026, periodo: "semestral", objetivasEsperadas: 100 }
 ];
 
-const questoes = [];
+const questoes = [
+  {
+    "edicao": "2025/1",
+    "numero": 1,
+    "gabarito": "B",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 2,
+    "gabarito": "A",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 3,
+    "gabarito": "A",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 4,
+    "gabarito": "B",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 5,
+    "gabarito": "D",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 6,
+    "gabarito": "C",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 7,
+    "gabarito": "-",
+    "anulada": true,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 8,
+    "gabarito": "B",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 9,
+    "gabarito": "A",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 10,
+    "gabarito": "C",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 11,
+    "gabarito": "B",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 12,
+    "gabarito": "A",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 13,
+    "gabarito": "A",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 14,
+    "gabarito": "D",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 15,
+    "gabarito": "A",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 16,
+    "gabarito": "B",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 17,
+    "gabarito": "B",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 18,
+    "gabarito": "D",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 19,
+    "gabarito": "D",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 20,
+    "gabarito": "B",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 21,
+    "gabarito": "C",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 22,
+    "gabarito": "B",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 23,
+    "gabarito": "-",
+    "anulada": true,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 24,
+    "gabarito": "A",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 25,
+    "gabarito": "B",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 26,
+    "gabarito": "D",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 27,
+    "gabarito": "D",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 28,
+    "gabarito": "B",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 29,
+    "gabarito": "A",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 30,
+    "gabarito": "A",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 31,
+    "gabarito": "C",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 32,
+    "gabarito": "C",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 33,
+    "gabarito": "C",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 34,
+    "gabarito": "D",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 35,
+    "gabarito": "A",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 36,
+    "gabarito": "B",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 37,
+    "gabarito": "D",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 38,
+    "gabarito": "C",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 39,
+    "gabarito": "D",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 40,
+    "gabarito": "B",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 41,
+    "gabarito": "A",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 42,
+    "gabarito": "B",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 43,
+    "gabarito": "D",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 44,
+    "gabarito": "A",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 45,
+    "gabarito": "C",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 46,
+    "gabarito": "C",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 47,
+    "gabarito": "C",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 48,
+    "gabarito": "B",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 49,
+    "gabarito": "D",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 50,
+    "gabarito": "B",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 51,
+    "gabarito": "A",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 52,
+    "gabarito": "B",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 53,
+    "gabarito": "D",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 54,
+    "gabarito": "A",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 55,
+    "gabarito": "C",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 56,
+    "gabarito": "C",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 57,
+    "gabarito": "D",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 58,
+    "gabarito": "C",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 59,
+    "gabarito": "D",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 60,
+    "gabarito": "B",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 61,
+    "gabarito": "A",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 62,
+    "gabarito": "B",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 63,
+    "gabarito": "D",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 64,
+    "gabarito": "A",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 65,
+    "gabarito": "C",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 66,
+    "gabarito": "C",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 67,
+    "gabarito": "D",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 68,
+    "gabarito": "C",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 69,
+    "gabarito": "D",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 70,
+    "gabarito": "B",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 71,
+    "gabarito": "B",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 72,
+    "gabarito": "D",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 73,
+    "gabarito": "C",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 74,
+    "gabarito": "D",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 75,
+    "gabarito": "C",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 76,
+    "gabarito": "A",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 77,
+    "gabarito": "C",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 78,
+    "gabarito": "D",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 79,
+    "gabarito": "A",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 80,
+    "gabarito": "D",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 81,
+    "gabarito": "A",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 82,
+    "gabarito": "B",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 83,
+    "gabarito": "D",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 84,
+    "gabarito": "B",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 85,
+    "gabarito": "C",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 86,
+    "gabarito": "B",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 87,
+    "gabarito": "B",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 88,
+    "gabarito": "B",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 89,
+    "gabarito": "C",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 90,
+    "gabarito": "B",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 91,
+    "gabarito": "A",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 92,
+    "gabarito": "D",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 93,
+    "gabarito": "A",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 94,
+    "gabarito": "B",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 95,
+    "gabarito": "A",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 96,
+    "gabarito": "B",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 97,
+    "gabarito": "D",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 98,
+    "gabarito": "A",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 99,
+    "gabarito": "C",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  },
+  {
+    "edicao": "2025/1",
+    "numero": 100,
+    "gabarito": "D",
+    "anulada": false,
+    "status": "identificada",
+    "fonte": "INEP — Prova Objetiva 2025/1",
+    "conteudoValidado": false
+  }
+];
 
 // Conteúdos futuros não fazem parte do banco de questões.
 const treinamentos = [
