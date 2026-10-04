@@ -2,8 +2,6 @@ name: Extract Revalida PDF
 
 on:
   push:
-    paths:
-      - "provas/2025/2025-1/2025_1_PV_objetiva_regular.pdf"
 
 permissions:
   contents: write
