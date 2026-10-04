@@ -1,5 +1,95 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Edição · Projeto Revalida</title><style>
-:root{--bg:#07111f;--panel:#0d1b2e;--line:#1d3553;--text:#eef5ff;--muted:#8fa6c2;--accent:#4da3ff;--red:#ff667d}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Arial}header{padding:18px 28px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between}header a{color:var(--text);text-decoration:none}.wrap{width:min(1100px,calc(100% - 36px));margin:45px auto}.eyebrow{color:var(--accent);font-size:.8rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase}.top{display:flex;justify-content:space-between;align-items:end;margin-bottom:25px}.top h1{font-size:2.8rem;margin:8px 0}.top p{color:var(--muted);margin:0}.back{color:var(--accent);text-decoration:none}.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.q{min-height:72px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--text);text-decoration:none;font-weight:800;transition:.15s}.q:hover{border-color:var(--accent);transform:translateY(-2px)}.q.ann{border-color:#713d49}.legend{color:var(--muted);font-size:.85rem;margin:18px 0}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);margin:0 6px}.dot.red{background:var(--red)}@media(max-width:750px){.grid{grid-template-columns:repeat(4,1fr)}.top{display:block}.back{display:inline-block;margin-top:15px}}@media(max-width:480px){.grid{grid-template-columns:repeat(3,1fr)}}
-</style></head><body><header><a href="treino_revalida.html">← Edições</a><span>Banco de Questões</span></header><main class="wrap"><div class="top"><div><div class="eyebrow">Revalida <span id="ed"></span></div><h1>100 questões</h1><p>Selecione uma questão para abrir sua página individual.</p></div><a class="back" href="treino_revalida.html">Trocar edição</a></div><div class="legend"><span class="dot"></span>Questão disponível no banco <span class="dot red"></span>Questão anulada</div><div id="grid" class="grid"></div></main><script src="questoes.js"></script><script>
-const p=new URLSearchParams(location.search),id=p.get("edicao")||"2025-1",ed=id.replace("-","/");document.getElementById("ed").textContent=ed;const gab=gabaritosOficiais[ed]||gabaritosPreliminares[ed]||{};document.getElementById("grid").innerHTML=Array.from({length:100},(_,i)=>{const n=i+1,s=String(n).padStart(3,"0"),a=gab[n]==="-"?" ann":"";return '<a class="q'+a+'" href="2025/'+ed.replace("/",".")+'/q'+s+'"><span>Q'+s+'</span></a>'}).join("");
-</script></body></html>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Edição · Projeto Revalida</title>
+<style>
+:root{--bg:#07111f;--panel:#0d1b2e;--panel2:#10233a;--line:#1d3553;--text:#eef5ff;--muted:#8fa6c2;--accent:#4da3ff;--red:#ff667d}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif}
+header{position:sticky;top:0;z-index:10;padding:14px 20px;border-bottom:1px solid var(--line);background:rgba(7,17,31,.96);backdrop-filter:blur(10px);display:flex;justify-content:space-between;gap:16px}
+header a{color:var(--text);text-decoration:none}
+.wrap{width:min(820px,calc(100% - 28px));margin:30px auto 70px}
+.eyebrow{color:var(--accent);font-size:.76rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+.top{margin-bottom:22px}
+.top h1{font-size:clamp(2rem,6vw,3rem);line-height:1.05;margin:7px 0}
+.top p{color:var(--muted);margin:0;line-height:1.5}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.actions a{display:inline-flex;align-items:center;justify-content:center;padding:9px 13px;border:1px solid var(--line);border-radius:10px;color:var(--text);text-decoration:none;background:var(--panel)}
+.actions a:hover{border-color:var(--accent)}
+.legend{color:var(--muted);font-size:.82rem;margin:0 0 18px}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);margin:0 6px 0 2px}
+.dot.red{background:var(--red);margin-left:14px}
+.queue{display:flex;flex-direction:column;gap:14px}
+.q{display:block;border:1px solid var(--line);border-radius:14px;background:var(--panel);color:var(--text);text-decoration:none;padding:18px 20px;transition:border-color .15s,transform .15s,background .15s}
+.q:hover{border-color:var(--accent);background:var(--panel2);transform:translateY(-1px)}
+.q-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
+.q-number{font-size:.82rem;font-weight:900;letter-spacing:.12em;color:var(--accent)}
+.q-status{font-size:.72rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.q-status.ann{color:var(--red)}
+.q-title{font-size:1rem;font-weight:750}
+.q-note{margin-top:6px;color:var(--muted);font-size:.84rem;line-height:1.45}
+@media(max-width:600px){
+  header{padding:12px 14px;font-size:.88rem}
+  .wrap{width:min(100% - 20px,820px);margin-top:22px}
+  .q{padding:16px}
+  .q-title{font-size:.96rem}
+}
+</style>
+</head>
+<body>
+<header>
+  <a href="treino_revalida.html">← Edições</a>
+  <span>Banco de Questões</span>
+</header>
+
+<main class="wrap">
+  <section class="top">
+    <div class="eyebrow">Revalida <span id="ed"></span></div>
+    <h1>100 questões</h1>
+    <p>Fila contínua de questões. O conteúdo ocupa uma única coluna para facilitar leitura, rolagem e uso em celular ou tablet.</p>
+    <div class="actions">
+      <a href="treino_revalida.html">Trocar edição</a>
+      <a href="#q001">Ir para Q001</a>
+    </div>
+  </section>
+
+  <div class="legend">
+    <span class="dot"></span>Disponível
+    <span class="dot red"></span>Anulada
+  </div>
+
+  <section id="queue" class="queue"></section>
+</main>
+
+<script src="questoes.js"></script>
+<script>
+const p=new URLSearchParams(location.search);
+const id=p.get("edicao")||"2025-1";
+const ed=id.replace("-","/");
+document.getElementById("ed").textContent=ed;
+const gab=gabaritosOficiais[ed]||gabaritosPreliminares[ed]||{};
+const data=Array.isArray(questoes)?questoes:[];
+const byNumber=Object.fromEntries(data.filter(q=>q.edicao===ed).map(q=>[Number(q.numero),q]));
+
+document.getElementById("queue").innerHTML=Array.from({length:100},(_,i)=>{
+  const n=i+1;
+  const s=String(n).padStart(3,"0");
+  const anulada=gab[n]==="-";
+  const q=byNumber[n];
+  const titulo=q?.enunciado ? q.enunciado.replace(/\s+/g," ").trim() : "Questão "+s;
+  const nota=q?.enunciado ? "" : "Conteúdo da questão será exibido aqui após a importação validada do caderno oficial.";
+  return `<a id="q${s}" class="q" href="2025/${ed.replace("/",".")}/q${s}">
+    <div class="q-head">
+      <span class="q-number">Q${s}</span>
+      <span class="q-status ${anulada?"ann":""}">${anulada?"Anulada":"Questão objetiva"}</span>
+    </div>
+    <div class="q-title">${titulo}</div>
+    ${nota?`<div class="q-note">${nota}</div>`:""}
+  </a>`;
+}).join("");
+</script>
+</body>
+</html>
