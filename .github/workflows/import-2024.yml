@@ -21,10 +21,12 @@ jobs:
           grep -E '2024_1.*(PV|prova)|2024.*1.*(PV|prova)' /tmp/urls.txt | head -n 20 | while read -r u; do
             n=$(basename "$u" | sed 's/[?#].*//')
             curl -k -L --fail --silent --show-error "$u" -o "provas/2024/2024-1/$n" || true
+            case "$n" in 2024_1_PV_objetiva_regular.pdf) echo "FOUND 2024/1";; esac
           done
           grep -E '2024_2.*(PV|prova)|2024.*2.*(PV|prova)' /tmp/urls.txt | head -n 20 | while read -r u; do
             n=$(basename "$u" | sed 's/[?#].*//')
             curl -k -L --fail --silent --show-error "$u" -o "provas/2024/2024-2/$n" || true
+            case "$n" in 2024_2_PV_objetiva_regular.pdf) echo "FOUND 2024/2";; esac
           done
           find provas/2024 -type f -name '*.pdf' -size +100k -print
           test -n "$(find provas/2024/2024-1 -type f -name '*.pdf' -size +100k -print -quit)"
