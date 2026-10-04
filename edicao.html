@@ -73,13 +73,14 @@ document.getElementById("ed").textContent=ed;
 const gab=gabaritosOficiais[ed]||gabaritosPreliminares[ed]||{};
 const data=Array.isArray(questoes)?questoes:[];
 const byNumber=Object.fromEntries(data.filter(q=>q.edicao===ed).map(q=>[Number(q.numero),q]));
+const esc=s=>String(s??"").replace(/[&<>"]/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[ch]));
 
 document.getElementById("queue").innerHTML=Array.from({length:100},(_,i)=>{
   const n=i+1;
   const s=String(n).padStart(3,"0");
   const anulada=gab[n]==="-";
   const q=byNumber[n];
-  const titulo=q?.enunciado ? q.enunciado.replace(/\s+/g," ").trim() : "Questão "+s;
+  const titulo=q?.enunciado ? esc(q.enunciado.replace(/\s+/g," ").trim()) : "Questão "+s;
   const nota=q?.enunciado ? "" : "Conteúdo da questão será exibido aqui após a importação validada do caderno oficial.";
   return `<a id="q${s}" class="q" href="2025/${ed.replace("/",".")}/q${s}">
     <div class="q-head">
