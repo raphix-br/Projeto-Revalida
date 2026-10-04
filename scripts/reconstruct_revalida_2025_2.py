@@ -1,38 +1,23 @@
-import json, re, xml.etree.ElementTree as ET
-xml_path="/tmp/prova.xml"
-raw=open(xml_path,"rb").read().decode("utf-8","ignore")
-raw=re.sub(r"[\\x00-\\x08\\x0B\\x0C\\x0E-\\x1F]","",raw)
-raw=re.sub(r"&(?!amp;|lt;|gt;|quot;|apos;)","&amp;",raw)
-open("/tmp/prova_clean.xml","w",encoding="utf-8").write(raw)
-root = ET.parse("/tmp/prova_clean.xml").getroot()
+import json, re
+
+text = open("/tmp/prova.txt", encoding="utf-8").read().replace("\r","")
 questions = []
-for page_no, page in enumerate(root.findall(".//{*}page"), 1):
-    words=[]
-    for w in page.findall(".//{*}word"):
-        try:
-            x=float(w.attrib["xMin"]); y=float(w.attrib["yMin"])
-        except (KeyError,ValueError):
-            continue
-        words.append((y,x,w.text or ""))
-    words.sort(key=lambda z:(z[0],z[1]))
-    lines=[]
-    for y,x,t in words:
-        if not lines or abs(y-lines[-1][0])>1.8: lines.append([y,[]])
-        lines[-1][1].append((x,t))
-    width=float(page.attrib.get("width","595")); mid=width/2
+for page_no, page in enumerate(text.split("\f"), 1):
+    lines = page.splitlines()
     cols=[[],[]]
-    for y,ws in lines:
-        left=[t for x,t in ws if x<mid]; right=[t for x,t in ws if x>=mid]
-        if left: cols[0].append(" ".join(left))
-        if right: cols[1].append(" ".join(right))
+    for line in lines:
+        left=line[:75].rstrip()
+        right=line[75:].strip()
+        if left: cols[0].append(left)
+        if right: cols[1].append(right)
     for col in cols:
-        text="\n".join(col)
-        matches=list(re.finditer(r"QUESTÃO\s+(\d+)",text))
+        t="\n".join(col)
+        matches=list(re.finditer(r"QUESTÃO\s+(\d+)",t))
         for idx,m in enumerate(matches):
             n=int(m.group(1))
             if not 1<=n<=100: continue
-            end=matches[idx+1].start() if idx+1<len(matches) else len(text)
-            seg=text[m.end():end].strip()
+            end=matches[idx+1].start() if idx+1<len(matches) else len(t)
+            seg=t[m.end():end].strip()
             seg=re.sub(r"PRIMEIRA EDIÇÃO|SEGUNDA EDIÇÃO","",seg)
             seg=re.sub(r"ÁREA LIVRE","",seg)
             seg=re.sub(r"\n{3,}","\n\n",seg)
