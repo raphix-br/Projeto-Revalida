@@ -1,43 +1,10 @@
-<!doctype html>
-<html lang="pt-BR">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Projeto Revalida — Biblioteca</title>
-<style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f4f6f9;color:#17212b}header{padding:24px;text-align:center;background:#1a2533;color:#fff}main{max-width:1100px;margin:24px auto;padding:0 16px}.intro,.edicao{background:#fff;border-radius:12px;padding:18px;margin-bottom:14px;box-shadow:0 2px 8px #00000012}.intro{display:flex;justify-content:space-between;gap:16px;align-items:center}.intro h1{margin:0 0 6px}.btn{display:inline-block;padding:11px 16px;border:0;border-radius:8px;background:#0a9c6b;color:#fff;text-decoration:none;font-weight:bold}.grid{display:grid;gap:12px}.edicao{display:grid;grid-template-columns:120px 1fr auto;gap:16px;align-items:center}.nome{font-weight:bold;font-size:1.15rem}.status{font-size:.92rem;color:#566}.pill{display:inline-block;margin:3px 5px 0 0;padding:4px 9px;border-radius:999px;background:#eef2f5}.ok{color:#18794e}.warn{color:#9a6700}.muted{color:#6b7280}@media(max-width:700px){.intro,.edicao{display:block}.btn{margin-top:12px}}
-</style>
-</head>
-<body>
-<header><h1>Projeto Revalida</h1><div>Biblioteca de provas — Banco de Questões INEP</div></header>
-<main>
-<section class="intro">
-<div><h1>Biblioteca</h1><div id="resumo"></div></div>
-<a class="btn" href="treino_revalida.html">Abrir banco de questões</a>
-</section>
-<div id="lista" class="grid"></div>
-</main>
-<script src="questoes.js"></script>
-<script>
-const qtdPorEdicao=Object.fromEntries(edicoes.map(e=>[e.id,questoes.filter(q=>q.edicao.replace("/","-")===e.id).length]));
-const gabPorEdicao=Object.fromEntries(edicoes.map(e=>[e.id,questoes.filter(q=>q.edicao.replace("/","-")===e.id && q.gabarito).length]));
-const resumo=document.getElementById("resumo");
-resumo.textContent=`${questoes.length} questões importadas • ${edicoes.length} edições catalogadas • validação oficial ainda em andamento`;
-const foco=["2025-1","2025-2"];
-const resumo=document.getElementById("resumo");
-resumo.textContent="Foco atual: 2025/1 e 2025/2 • questões objetivas • validação edição por edição";
-document.getElementById("lista").innerHTML=foco.map(id=>{
- const e=edicoes.find(x=>x.id===id);
- const n=questoes.filter(q=>q.edicao===e.nome).length;
- const g=e.nome==="2025/1" ? "gabarito definitivo oficial registrado" : "gabarito preliminar parcial registrado";
- const fonte=e.nome==="2025/1" ? "prova objetiva + gabarito definitivo" : "caderno 1 + gabarito preliminar";
- const qStatus=n===100?"🟢 100/100 importadas":`🟡 ${n}/100 importadas`;
- return `<article class="edicao">
-   <div class="nome">${e.nome}</div>
-   <div class="status"><span class="pill">Questões: ${qStatus}</span><span class="pill">Gabarito: ${g}</span><span class="pill">Fonte: ${fonte}</span></div>
-   <div><a class="btn" href="treino_revalida.html?edicao=${id}">Ver</a></div>
- </article>`;
-}).join("");
-</script>
-</body>
-</html>
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Projeto Revalida</title><style>
+:root{--bg:#07111f;--panel:#0d1b2e;--line:#1d3553;--text:#eef5ff;--muted:#8fa6c2;--accent:#4da3ff}*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:Inter,system-ui,Arial;background:radial-gradient(circle at 50% 0,#173452,#07111f 55%,#040a12);color:var(--text)}header{text-align:center;padding:42px 20px 20px}.brand{color:#77c4ff;font-weight:800;letter-spacing:.2em;font-size:.85rem}h1{font-size:clamp(2.2rem,6vw,4rem);margin:10px 0}header p{color:var(--muted);margin:0}.hub{width:min(1050px,calc(100% - 36px));margin:35px auto 70px;text-align:center}.hub h2{margin-bottom:28px}.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.choice{min-height:190px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,#10233a,#091523);color:var(--text);text-decoration:none;padding:28px;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:.2s;box-shadow:0 18px 50px #0005}.available:hover{transform:translateY(-5px);border-color:var(--accent)}.disabled{opacity:.32;filter:grayscale(1)}.icon{font-size:3rem;margin-bottom:15px}.choice strong{font-size:1.2rem}.choice span{color:var(--muted);font-size:.9rem;margin-top:8px}.version{position:fixed;right:15px;bottom:12px;color:#607993;font-size:.75rem}@media(max-width:800px){.choices{grid-template-columns:1fr}.choice{min-height:145px;flex-direction:row;gap:18px}.icon{margin:0}}
+</style></head><body><header><div class="brand">INEP · REVALIDA</div><h1>Projeto Revalida</h1><p>Banco de questões e ferramentas de estudo</p></header><main class="hub"><h2>O que você deseja explorar?</h2><div class="choices">
+<a class="choice available" href="treino_revalida.html"><div class="icon">▦</div><strong>Banco de Questões</strong><span>Provas objetivas do Revalida</span></a>
+<div class="choice disabled"><div class="icon">▤</div><strong>Gabarito Comentado</strong><span>Em desenvolvimento</span></div>
+<div class="choice disabled"><div class="icon">◆</div><strong>Flashcards</strong><span>Em desenvolvimento</span></div>
+<div class="choice disabled"><div class="icon">◫</div><strong>Simulados</strong><span>Em desenvolvimento</span></div>
+<div class="choice disabled"><div class="icon">⌁</div><strong>Desempenho</strong><span>Em desenvolvimento</span></div>
+<div class="choice disabled"><div class="icon">⚙</div><strong>Ferramentas</strong><span>Em desenvolvimento</span></div>
+</div></main><div class="version">v0.4.0</div></body></html>
