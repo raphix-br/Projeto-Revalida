@@ -1,5 +1,10 @@
 import json, re, xml.etree.ElementTree as ET
-root = ET.parse("/tmp/prova.xml").getroot()
+xml_path="/tmp/prova.xml"
+raw=open(xml_path,"rb").read().decode("utf-8","ignore")
+raw=re.sub(r"[\\x00-\\x08\\x0B\\x0C\\x0E-\\x1F]","",raw)
+raw=re.sub(r"&(?!amp;|lt;|gt;|quot;|apos;)","&amp;",raw)
+open("/tmp/prova_clean.xml","w",encoding="utf-8").write(raw)
+root = ET.parse("/tmp/prova_clean.xml").getroot()
 questions = []
 for page_no, page in enumerate(root.findall(".//{*}page"), 1):
     words=[]
