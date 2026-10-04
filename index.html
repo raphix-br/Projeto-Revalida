@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Revalida Study Platform</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: Arial, sans-serif; background:#f4f6f9; height:100vh; display:flex; flex-direction:column; }
+    .top-bar { background:#1a2533; color:white; padding:20px; font-size:1.8em; font-weight:bold; text-align:center; }
+    .container { flex:1; display:flex; align-items:center; justify-content:center; gap:40px; }
+    .big-option { width:420px; padding:60px 40px; background:white; border:5px solid #0a9c6b; border-radius:24px; text-align:center; cursor:pointer; box-shadow:0 10px 25px rgba(10,156,107,0.3); transition:0.3s; }
+    .big-option:hover { transform:scale(1.08); background:#e8f5e9; }
+
+    .banco-container { flex:1; display:flex; flex-direction:column; }
+    .filtros { padding:15px; background:#f8f9fa; display:flex; flex-wrap:wrap; gap:15px; align-items:center; border-bottom:1px solid #ddd; }
+    .lista { flex:1; overflow:auto; padding:20px; }
+    .card { background:white; padding:15px; margin:10px 0; border-radius:12px; border-left:6px solid #0a9c6b; cursor:pointer; }
+    .card:hover { background:#f0f8f4; }
+    .tag { display:inline-block; background:#555; color:white; padding:4px 12px; border-radius:20px; font-size:0.85em; margin:2px 4px; }
+
+    .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); align-items:center; justify-content:center; z-index:2000; }
+    .modal-content { background:white; width:95%; max-width:1250px; border-radius:12px; max-height:92vh; display:flex; overflow:hidden; }
+    .modal-left { flex:1; padding:25px; overflow-y:auto; }
+    .modal-right { width:460px; background:#f8f9fa; padding:25px; border-left:1px solid #ddd; overflow-y:auto; }
+    .modal-header { background:#1a2533; color:white; padding:15px; text-align:center; font-size:1.3em; }
+    .modal-option { padding:15px; border:2px solid #007bff; border-radius:10px; margin:10px 0; cursor:pointer; }
+    .modal-option.selecionada { background:#bbdefb; }
+    .modal-option.correta { background:#d4edda; border-color:#28a745; font-weight:bold; }
+    .explicacao-box { background:white; padding:18px; border-radius:12px; margin-bottom:15px; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
+    mark { background:#ffeb3b; padding:3px 6px; border-radius:4px; font-weight:bold; }
+  </style>
+</head>
+<body>
+
+<div class="top-bar">Revalida Study Platform</div>
+
+<div class="container" id="homeScreen">
+  <div class="big-option" onclick="irPara('banco')">
+    <h2>📚 Banco de Questões</h2>
+    <p style="font-size:1.3em; color:#555;">100 questões completas da prova 2025/1</p>
+  </div>
+</div>
+
+<!-- BANCO DE QUESTÕES -->
+<div id="bancoScreen" class="banco-container" style="display:none;">
+  <div class="filtros">
+    <div>
+      <label><strong>Quantas questões?</strong></label><br>
+      <input type="range" id="qtdSlider" min="5" max="100" step="5" value="20" oninput="document.getElementById('qtdValue').innerText=this.value">
+      <span id="qtdValue" style="font-size:1.6em; font-weight:bold;">20</span>
+    </div>
+    <div>
+      <label><strong>Digite para filtrar</strong></label><br>
+      <input type="text" id="buscaInput" placeholder="Ex: hipertensao, sca, imunoglobulina" style="padding:10px; width:340px;" onkeyup="filtrarQuestoes()">
+    </div>
+    <button onclick="gerarProva()" style="padding:15px 35px; background:#0a9c6b; color:white; border:none; border-radius:10px; font-size:1.2em;">Gerar Prova</button>
+  </div>
+
+  <div id="listaQuestoes" class="lista"></div>
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <!-- LADO ESQUERDO -->
+    <div class="modal-left">
+      <div class="modal-header" id="modalTitulo">Questão <span id="modalId"></span></div>
+      <div id="modalEnunciado" style="font-size:1.25em; line-height:1.6; margin-bottom:25px; white-space:pre-wrap;"></div>
+      <div id="modalOpcoes"></div>
+      <button id="revelarBtn" style="display:none; margin-top:20px; padding:15px 30px; background:#28a745; color:white; border:none; border-radius:10px; width:100%; font-size:1.2em;" onclick="revelarResposta()">Revelar Resposta + Explicação</button>
+    </div>
+
+    <!-- LADO DIREITO -->
+    <div class="modal-right">
+      <h3 style="margin-bottom:15px; color:#1a2533;">Como identificar o tema</h3>
+      <div id="passoAPasso" class="explicacao-box"></div>
+      
+      <h3 style="margin-bottom:15px; color:#1a2533;">Por que pensar nesse tema?</h3>
+      <div id="porQueEsseTema" class="explicacao-box"></div>
+      
+      <h3 style="margin-bottom:15px; color:#1a2533;">Conduta resumida (todos os cenários Rh)</h3>
+      <div id="condutaResumida" class="explicacao-box"></div>
+    </div>
+
+    <button onclick="fecharModal()" style="position:absolute;top:15px;right:25px;background:none;border:none;font-size:2em;color:#666;cursor:pointer;">✕</button>
+  </div>
+</div>
+
+<script>
+// ====================== BANCO DE QUESTÕES ======================
+const bancoQuestoes = [
+  {id:99, area:"Ginecologia e Obstetrícia", tema:"Isoimunização Rh", subtema:"Imunoglobulina anti-D", pergunta:"Uma puérpera (Gesta 3, Para 2, Aborto 1) teve parto pré-termo com 36 semanas, sem intercorrências.", gabarito:"D", tags:["GO","imunoglobulina anti-D","Rh negativo","Coombs"], enunciadoCompleto:"Uma puérpera (Gesta 3, Para 2, Aborto 1) teve parto pré-termo com 36 semanas, sem intercorrências. A tipagem sanguínea materna resultou grupo A com fator Rh negativo e o teste de Coombs indireto foi positivo (título 1:4). O recém-nascido apresentou tipagem sanguínea grupo O fator Rh positivo e o Coombs direto negativo. A paciente recebeu imunoglobulina anti-D na 28ª semana de gestação.", alternativasCompleto:["a imunoprofilaxia na 28ª semana foi eficaz e a paciente não necessita de nova dose.","a paciente desenvolveu aloimunização ao antígeno D e a imunoprofilaxia não será eficaz.","o Coombs direto negativo indica que a imunoglobulina anti-D deve ser administrada em dose dupla.","o teste de Coombs indireto positivo é esperado e a imunoglobulina anti-D deve ser administrada."], justificativa:"Resposta correta: D", palavrasChave:["Rh negativo","fator Rh do bebê","imunoglobulina anti-D","Coombs indireto positivo","RN Rh positivo"], passoAPasso:"1️⃣ Mãe Rh negativo\n2️⃣ RN Rh positivo\n3️⃣ Coombs indireto positivo (esperado após dose na 28ª semana)\n4️⃣ Coombs direto negativo no bebê", porQueEsseTema:"Após administração de imunoglobulina anti-D, o Coombs indireto fica positivo por 6-12 semanas. Mesmo assim, se o RN for Rh positivo, deve-se dar nova dose pós-parto.", condutaResumida:"<strong>Resumo completo da conduta Rh:</strong><br>• Mãe Rh- e Bebê Rh+: dar imunoglobulina anti-D até 72h após parto<br>• Mãe Rh- e Bebê Rh-: não precisa dar<br>• Mãe Rh+: não precisa dar<br>• Sempre dar dose antenatal (28 semanas) se mãe Rh-"}
+];
+
+let questoesFiltradas = [];
+let questaoAtual = null;
+
+function irPara(tela) {
+  document.getElementById("homeScreen").style.display = "none";
+  if (tela === "banco") {
+    document.getElementById("bancoScreen").style.display = "flex";
+    filtrarQuestoes();
+  }
+}
+
+function filtrarQuestoes() {
+  const busca = document.getElementById("buscaInput").value.toLowerCase().trim();
+  questoesFiltradas = bancoQuestoes.filter(q => !busca || q.tags.some(tag => tag.toLowerCase().includes(busca)) || q.tema.toLowerCase().includes(busca) || q.subtema.toLowerCase().includes(busca) || q.pergunta.toLowerCase().includes(busca));
+  renderLista();
+}
+
+function renderLista() {
+  const container = document.getElementById("listaQuestoes");
+  container.innerHTML = `<h3>${questoesFiltradas.length} questões encontradas</h3>`;
+  questoesFiltradas.forEach(q => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <strong>Questão ${q.id}</strong> — ${q.area} > ${q.tema}<br>
+      <small>${q.pergunta.substring(0,140)}...</small><br>
+      <div style="margin-top:8px;">${q.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
+    `;
+    card.onclick = () => abrirModalQuestao(q);
+    container.appendChild(card);
+  });
+}
+
+function abrirModalQuestao(q) {
+  questaoAtual = q;
+  document.getElementById("modalId").textContent = q.id;
+  document.getElementById("modalEnunciado").innerHTML = `<strong>Enunciado completo:</strong><br><br>${q.enunciadoCompleto}`;
+  
+  const opcoesHTML = q.alternativasCompleto.map((alt, i) => {
+    const letra = String.fromCharCode(65 + i);
+    return `<div class="modal-option" data-index="${i}" onclick="selecionarOpcao(this)">${letra} - ${alt}</div>`;
+  }).join('');
+  document.getElementById("modalOpcoes").innerHTML = opcoesHTML;
+  
+  document.getElementById("revelarBtn").style.display = "none";
+  document.getElementById("modal").style.display = "flex";
+}
+
+function selecionarOpcao(element) {
+  document.querySelectorAll(".modal-option").forEach(el => el.classList.remove("selecionada"));
+  element.classList.add("selecionada");
+  document.getElementById("revelarBtn").style.display = "block";
+}
+
+function revelarResposta() {
+  const q = questaoAtual;
+  const indexCorreta = q.gabarito.charCodeAt(0) - 65;
+  document.querySelectorAll(".modal-option").forEach((el, i) => {
+    if (i === indexCorreta) el.classList.add("correta");
+  });
+
+  // Grifar palavras-chave no enunciado (só agora)
+  let enunciadoDestacado = q.enunciadoCompleto;
+  q.palavrasChave.forEach((palavra, index) => {
+    const numero = (index + 1) + "️⃣";
+    const regex = new RegExp(palavra, "gi");
+    enunciadoDestacado = enunciadoDestacado.replace(regex, `<mark>${numero} ${palavra}</mark>`);
+  });
+  document.getElementById("modalEnunciado").innerHTML = `<strong>Enunciado completo:</strong><br><br>${enunciadoDestacado}`;
+
+  // Lado direito
+  document.getElementById("passoAPasso").innerHTML = `<strong>Passo a passo para identificar o tema:</strong><br>${q.passoAPasso}`;
+  document.getElementById("porQueEsseTema").innerHTML = `<strong>Por que pensar nesse tema?</strong><br>${q.porQueEsseTema}`;
+  document.getElementById("condutaResumida").innerHTML = `<strong>Conduta resumida (todos os cenários Rh):</strong><br>${q.condutaResumida}`;
+}
+
+function fecharModal() {
+  document.getElementById("modal").style.display = "none";
+}
+
+function gerarProva() {
+  const qtd = parseInt(document.getElementById("qtdSlider").value);
+  alert(`Gerando prova com ${qtd} questões!`);
+}
+</script>
+</body>
+</html>
