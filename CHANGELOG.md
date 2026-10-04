@@ -1,3 +1,11 @@
+## v0.4.2 — Identificação das 100 questões de 2025/1
+- Identificadas as **100 questões objetivas** da edição 2025/1 em `questoes.js`.
+- Cada registro foi associado à edição, número da questão, gabarito definitivo e indicação de anulação.
+- Q7 e Q23 permanecem identificadas como anuladas.
+- As questões foram deliberadamente marcadas com `conteudoValidado: false`: identificação não equivale a transcrição validada.
+- Nenhum enunciado, alternativa ou mídia foi inventado ou preenchido por aproximação.
+- Próxima etapa: importar e validar **enunciado + alternativas + mídia** diretamente do caderno oficial.
+
 # Changelog
 
 ## v0.4.1 — Fila vertical responsiva
