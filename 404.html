@@ -48,7 +48,7 @@ if(m){
   const ed=m[1].replace(".","/"), n=Number(m[2]);
   const list=Array.isArray(questoes)?questoes:[];
   const q=list.find(x=>x.edicao===ed&&Number(x.numero)===n);
-  const gab=(gabaritosOficiais[ed]||gabaritosPreliminares[ed]||{})[n];
+  const gab=q?.gabarito ?? (gabaritosOficiais[ed]||gabaritosPreliminares[ed]||{})[n];
   document.getElementById("title").textContent="Questão "+n;
   document.getElementById("crumb").innerHTML='<a href="../../../treino_revalida.html">Banco de Questões</a> / <a href="../../../edicao.html?edicao='+ed.replace("/","-")+'">'+ed+'</a> / Q'+String(n).padStart(3,"0");
   if(q){
