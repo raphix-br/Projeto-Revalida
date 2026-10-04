@@ -5,9 +5,19 @@ for page_no,page in enumerate(text.split("\f"),1):
     cols=[[],[]]
     for line in page.splitlines():
         if not line.strip(): continue
-        leading=len(line)-len(line.lstrip(" "))
-        col=1 if leading>=45 else 0
-        cols[col].append(line.strip())
+        stripped=line.strip()
+        # Split lines containing both columns at the largest visual gutter.
+        runs=list(re.finditer(r" {5,}",line))
+        internal=[m for m in runs if m.start()>0 and m.end()<len(line)]
+        if internal:
+            gap=max(internal,key=lambda m:m.end()-m.start())
+            left=line[:gap.start()].strip()
+            right=line[gap.end():].strip()
+            if left: cols[0].append(left)
+            if right: cols[1].append(right)
+        else:
+            leading=len(line)-len(line.lstrip(" "))
+            cols[1 if leading>=45 else 0].append(stripped)
     for col in cols:
         t="\n".join(col)
         matches=list(re.finditer(r"QUESTÃO\s+(\d+)",t))
