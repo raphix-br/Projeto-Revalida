@@ -1,3 +1,14 @@
+## v0.6.0 — Questões 2025/2 disponíveis
+- Importadas as **100 questões objetivas do Caderno 01 da edição 2025/2** a partir do PDF oficial presente no repositório.
+- As rotas permanentes `2025/2025.2/q001` até `q100` passam a exibir enunciado e alternativas.
+- Questões que atravessam as duas colunas do PDF foram reconstruídas por posição visual para evitar mistura entre itens.
+- Foram tratados artefatos de tabelas, numeração de página e do questionário de percepção.
+- Q7, Q9, Q11, Q43, Q55, Q85 e Q87 estão marcadas como anuladas no banco importado.
+- O banco preserva também o **gabarito preliminar do INEP** em `gabaritoPreliminar`; o status da edição permanece `importada-preliminar` até haver fonte oficial definitiva incorporada ao projeto.
+- A página individual prioriza o status da própria questão, inclusive anulação, em vez de sobrescrever o resultado com o mapa preliminar.
+- O banco agora contém **200 questões importadas**: 100 de 2025/1 e 100 de 2025/2.
+- Versão atualizada para **v0.6.0**.
+
 ## v0.5.0 — Questões 2025/1 disponíveis
 - Importadas as **100 questões objetivas de 2025/1** diretamente do caderno oficial do INEP presente no repositório.
 - Cada questão agora possui **enunciado, quatro alternativas, página original e gabarito definitivo**.
