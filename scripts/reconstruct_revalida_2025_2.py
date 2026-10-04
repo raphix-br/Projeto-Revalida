@@ -70,7 +70,7 @@ for q in questions:
         out[q["numero"]]=q
 
 for q in out.values():
-    q["texto"]=re.sub(r"\n?\s*\d{1,2}\s*$","",q["texto"]).strip()
+    q["texto"]=re.split(r"QUESTIONÁRIO DE PERCEPÇÃO DA PROVA|Em relação ao tempo total de aplicação, você considera que a prova foi|As informações/instruções fornecidas para a resolução das questões foram suficientes para resolvê-las\?|Você já participou, no Brasil, de outro\(s\) processo\(s\) de revalidação",q["texto"],maxsplit=1)[0].strip()\n    q["texto"]=re.sub(r"\n?\s*\d{1,2}\s*$","",q["texto"]).strip()
 
 missing=[n for n in range(1,101) if n not in out]
 print("QUESTOES=",len(out),"MISSING=",missing)
