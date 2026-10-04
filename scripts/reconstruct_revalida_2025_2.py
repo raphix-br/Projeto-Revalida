@@ -2,16 +2,24 @@ import json, re
 text=open("/tmp/prova.txt",encoding="utf-8").read().replace("\r","")
 questions=[]
 for page_no,page in enumerate(text.split("\f"),1):
-    matches=list(re.finditer(r"QUESTÃO\s+(\d+)",page))
-    for idx,m in enumerate(matches):
-        n=int(m.group(1))
-        if not 1<=n<=100: continue
-        end=matches[idx+1].start() if idx+1<len(matches) else len(page)
-        seg=page[m.end():end].strip()
-        seg=re.sub(r"PRIMEIRA EDIÇÃO|SEGUNDA EDIÇÃO","",seg)
-        seg=re.sub(r"ÁREA LIVRE","",seg)
-        seg=re.sub(r"\n{3,}","\n\n",seg)
-        questions.append({"numero":n,"pagina":page_no,"texto":seg})
+    cols=[[],[]]
+    for line in page.splitlines():
+        if not line.strip(): continue
+        leading=len(line)-len(line.lstrip(" "))
+        col=1 if leading>=45 else 0
+        cols[col].append(line.strip())
+    for col in cols:
+        t="\n".join(col)
+        matches=list(re.finditer(r"QUESTÃO\s+(\d+)",t))
+        for idx,m in enumerate(matches):
+            n=int(m.group(1))
+            if not 1<=n<=100: continue
+            end=matches[idx+1].start() if idx+1<len(matches) else len(t)
+            seg=t[m.end():end].strip()
+            seg=re.sub(r"PRIMEIRA EDIÇÃO|SEGUNDA EDIÇÃO","",seg)
+            seg=re.sub(r"ÁREA LIVRE","",seg)
+            seg=re.sub(r"\n{3,}","\n\n",seg)
+            questions.append({"numero":n,"pagina":page_no,"texto":seg})
 out={}
 for q in questions: out.setdefault(q["numero"],q)
 missing=[n for n in range(1,101) if n not in out]
