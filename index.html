@@ -23,14 +23,19 @@ const qtdPorEdicao=Object.fromEntries(edicoes.map(e=>[e.id,questoes.filter(q=>q.
 const gabPorEdicao=Object.fromEntries(edicoes.map(e=>[e.id,questoes.filter(q=>q.edicao.replace("/","-")===e.id && q.gabarito).length]));
 const resumo=document.getElementById("resumo");
 resumo.textContent=`${questoes.length} questões importadas • ${edicoes.length} edições catalogadas • validação oficial ainda em andamento`;
-document.getElementById("lista").innerHTML=edicoes.map(e=>{
- const n=qtdPorEdicao[e.id]||0,g=gabPorEdicao[e.id]||0;
- const qStatus=n===e.objetivasEsperadas?"🟢 completa":n?"🟡 parcial":"⚪ não iniciada";
- const gStatus=n===0?"⚪ não iniciado":g===n?"🟡 armazenado · não validado":"🟠 incompleto";
+const foco=["2025-1","2025-2"];
+const resumo=document.getElementById("resumo");
+resumo.textContent="Foco atual: 2025/1 e 2025/2 • questões objetivas • validação edição por edição";
+document.getElementById("lista").innerHTML=foco.map(id=>{
+ const e=edicoes.find(x=>x.id===id);
+ const n=questoes.filter(q=>q.edicao===e.nome).length;
+ const g=e.nome==="2025/1" ? "gabarito definitivo oficial registrado" : "gabarito preliminar parcial registrado";
+ const fonte=e.nome==="2025/1" ? "prova objetiva + gabarito definitivo" : "caderno 1 + gabarito preliminar";
+ const qStatus=n===100?"🟢 100/100 importadas":`🟡 ${n}/100 importadas`;
  return `<article class="edicao">
    <div class="nome">${e.nome}</div>
-   <div class="status"><span class="pill">Questões: ${n}/${e.objetivasEsperadas} — ${qStatus}</span><span class="pill">Gabarito: ${g}/${n} — ${gStatus}</span></div>
-   <div><a class="btn" href="treino_revalida.html?edicao=${e.id}">Ver</a></div>
+   <div class="status"><span class="pill">Questões: ${qStatus}</span><span class="pill">Gabarito: ${g}</span><span class="pill">Fonte: ${fonte}</span></div>
+   <div><a class="btn" href="treino_revalida.html?edicao=${id}">Ver</a></div>
  </article>`;
 }).join("");
 </script>
