@@ -1,57 +1,57 @@
 # Projeto Revalida
 
-Website e plataforma de apoio ao Projeto Revalida.
+Banco de questões e plataforma de estudo focada no **Revalida do Inep**.
 
-O projeto tem como objetivo reunir, organizar e disponibilizar ferramentas, conteúdos e recursos relacionados à preparação para o Revalida.
+## Foco atual
 
-## Objetivos
+A prioridade desta fase é construir uma biblioteca confiável das **questões objetivas da 1ª etapa** do Revalida, edição por edição.
 
-- Organizar o conteúdo do Projeto Revalida.
-- Desenvolver um website próprio.
-- Criar ferramentas interativas para estudo.
-- Estruturar conteúdos de forma modular.
-- Permitir evolução contínua da plataforma.
-- Manter todo o desenvolvimento versionado no GitHub.
+O banco deverá evoluir até conter todas as questões das edições realizadas, com:
 
-## Estrutura do projeto
+- texto e alternativas;
+- identificação da edição e número da questão;
+- tags;
+- questões anuladas;
+- questões com imagens/mídias;
+- gabarito oficial definitivo, quando validado;
+- campos preparados para conteúdos futuros, como gabarito comentado e flashcards.
 
-O projeto será desenvolvido inicialmente como uma aplicação web.
+As questões discursivas e a segunda etapa serão tratadas separadamente para não misturar modelos de dados.
 
-A estrutura será organizada de forma modular, permitindo a expansão futura da plataforma.
+## Fonte oficial
 
-## Desenvolvimento
+A referência primária é a página de **Provas e Gabaritos do Inep**. Não considerar uma questão ou gabarito como oficial apenas porque foi copiado de outra fonte.
 
-O desenvolvimento é realizado dentro do ecossistema Raphix Lab.
+## Fonte única de dados
 
-O código-fonte, documentação, histórico de alterações e versões oficiais serão mantidos neste repositório.
+Toda questão fica em:
 
-## Versionamento
+`questoes.js`
 
-Versão atual:
+Os HTMLs apenas leem os dados. **Não duplicar questões dentro de `index.html`, `treino_revalida.html` ou outros arquivos.**
 
-**v0.1.0**
+## Estrutura mínima
 
-Alterações relevantes devem ser registradas no:
+```
+Projeto-Revalida/
+├── index.html
+├── treino_revalida.html
+├── questoes.js
+├── README.md
+├── CHANGELOG.md
+├── docs/
+│   └── AI_CONTEXT.md
+└── .github/
+    └── workflows/
+        └── validate.yml
+```
 
-`CHANGELOG.md`
+## Segurança contra regressões
+
+Toda alteração deve passar pela validação automática do GitHub Actions. O fluxo verifica a sintaxe JavaScript e a estrutura básica do banco.
+
+Antes de editar o banco, consulte `docs/AI_CONTEXT.md`.
 
 ## Status
 
-**Em desenvolvimento**
-
-## Publicação
-
-O website será publicado utilizando **GitHub Pages**.
-
-## Princípios do projeto
-
-- Código versionado.
-- Desenvolvimento incremental.
-- Documentação contínua.
-- Histórico transparente.
-- Estrutura modular.
-- Separação entre código, documentação e recursos.
-
----
-
-Projeto integrante do ecossistema **Raphix Lab**.
+**Em desenvolvimento — fase Banco de Questões.**
