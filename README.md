@@ -4,7 +4,7 @@ Banco de questões e plataforma de estudo focada no **Revalida do Inep**.
 
 ## Foco atual
 
-A prioridade desta fase é construir uma biblioteca confiável das **questões objetivas da 1ª etapa** do Revalida, edição por edição.
+A prioridade desta fase é construir uma biblioteca confiável das **questões objetivas da 1ª etapa**, trabalhando uma edição por vez. **No momento, o escopo está limitado a 2025/1 e 2025/2.**
 
 O banco deverá evoluir até conter todas as questões das edições realizadas, com:
 
@@ -54,4 +54,4 @@ Antes de editar o banco, consulte `docs/AI_CONTEXT.md`.
 
 ## Status
 
-**Em desenvolvimento — fase Banco de Questões.**
+**Em desenvolvimento — foco atual: Revalida 2025/1 e 2025/2.**
