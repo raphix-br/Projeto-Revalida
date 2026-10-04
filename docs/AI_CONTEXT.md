@@ -85,3 +85,13 @@ Depois disso, incorporar camadas por questão, sem duplicar a questão-base:
 - estatísticas e desempenho.
 
 Esses módulos devem referenciar a questão pelo `id` estável.
+
+
+## Regra operacional atual — 2025/1 e 2025/2
+
+- Os PDFs em provas/2025/2025-1/ e provas/2025/2025-2/ são as fontes documentais armazenadas no repositório.
+- **Não considerar as questões como validadas sem comparação direta com o caderno oficial.**
+- 2025/1: gabarito definitivo oficial registrado; conteúdo das questões ainda precisa ser conferido.
+- 2025/2: caderno disponível e gabarito preliminar disponível; não tratar como gabarito definitivo.
+- Não reconstruir enunciados por memória, resumo de terceiros ou inferência.
+- Se o PDF binário não puder ser lido por uma ferramenta, registrar a limitação em vez de inventar conteúdo.
