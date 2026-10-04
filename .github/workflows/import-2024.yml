@@ -9,27 +9,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Locate official 2024 PDFs
+      - name: Download official 2024 files from INEP
         shell: bash
         run: |
           set -e
           mkdir -p provas/2024/2024-1 provas/2024/2024-2
-          candidates1=(2024_1_PV_objetiva_regular.pdf 2024_1_PV_objetiva.pdf 2024_1_PV_objetiva_regular_definitivo.pdf)
-          candidates2=(2024_2_PV_objetiva_regular.pdf 2024_2_PV_objetiva.pdf 2024_2_PV_objetiva_regular_definitivo.pdf)
-          for f in "${candidates1[@]}"; do
-            u="https://download.inep.gov.br/revalida/provas_e_gabaritos/$f"
-            if curl -L --fail --silent --show-error "$u" -o "provas/2024/2024-1/$f"; then echo "2024/1=$f"; break; fi
-            rm -f "provas/2024/2024-1/$f"
+          page=/tmp/inep.html
+          curl -k -L --fail --silent --show-error "https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/revalida/provas-e-gabaritos" -o "$page"
+          grep -oE 'https?[^" ]+2024[^" ]+\.pdf' "$page" | sed 's/&amp;/\&/g' | sort -u > /tmp/urls.txt || true
+          cat /tmp/urls.txt
+          grep -E '2024_1.*(PV|prova)|2024.*1.*(PV|prova)' /tmp/urls.txt | head -n 20 | while read -r u; do
+            n=$(basename "$u" | sed 's/[?#].*//')
+            curl -k -L --fail --silent --show-error "$u" -o "provas/2024/2024-1/$n" || true
           done
-          for f in "${candidates2[@]}"; do
-            u="https://download.inep.gov.br/revalida/provas_e_gabaritos/$f"
-            if curl -L --fail --silent --show-error "$u" -o "provas/2024/2024-2/$f"; then echo "2024/2=$f"; break; fi
-            rm -f "provas/2024/2024-2/$f"
+          grep -E '2024_2.*(PV|prova)|2024.*2.*(PV|prova)' /tmp/urls.txt | head -n 20 | while read -r u; do
+            n=$(basename "$u" | sed 's/[?#].*//')
+            curl -k -L --fail --silent --show-error "$u" -o "provas/2024/2024-2/$n" || true
           done
-          test -n "$(find provas/2024/2024-1 -name '*.pdf' -print -quit)"
-          test -n "$(find provas/2024/2024-2 -name '*.pdf' -print -quit)"
-          git add provas/2024
+          find provas/2024 -type f -name '*.pdf' -size +100k -print
+          test -n "$(find provas/2024/2024-1 -type f -name '*.pdf' -size +100k -print -quit)"
+          test -n "$(find provas/2024/2024-2 -type f -name '*.pdf' -size +100k -print -quit)"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "chore: add official Revalida 2024 objective PDFs" || true
+          git add provas/2024
+          git commit -m "chore: add official Revalida 2024 files" || true
           git push
