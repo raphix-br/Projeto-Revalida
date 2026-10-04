@@ -10,13 +10,61 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install PDF tools
         run: sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
-      - name: Extract PDF text
+      - name: Extract PDF layout XML
         run: |
-          pdftotext "provas/2025/2025-1/2025_1_PV_objetiva_regular.pdf" "provas/2025/2025-1/2025_1_PV_objetiva_regular_raw.txt"
-      - name: Commit extracted text
+          pdftotext -bbox-layout "provas/2025/2025-1/2025_1_PV_objetiva_regular.pdf" /tmp/prova.xml
+      - name: Reconstruct two-column questions
+        run: |
+          python3 - <<'PY'
+          import xml.etree.ElementTree as ET, json, re
+          root=ET.parse('/tmp/prova.xml').getroot()
+          questions=[]
+          for page_no,page in enumerate(root.findall('.//page'),1):
+              words=[]
+              for w in page.findall('.//word'):
+                  try: x=float(w.attrib['xMin']); y=float(w.attrib['yMin'])
+                  except: continue
+                  words.append((y,x,w.text or ''))
+              # group words into visual lines
+              words.sort(key=lambda z:(z[0],z[1]))
+              lines=[]
+              for y,x,t in words:
+                  if not lines or abs(y-lines[-1][0])>1.8:
+                      lines.append([y,[]])
+                  lines[-1][1].append((x,t))
+              # split each visual line into left/right columns
+              cols=[[],[]]
+              width=float(page.attrib.get('width','595'))
+              mid=width/2
+              for y,ws in lines:
+                  left=[t for x,t in ws if x<mid]
+                  right=[t for x,t in ws if x>=mid]
+                  if left: cols[0].append(' '.join(left))
+                  if right: cols[1].append(' '.join(right))
+              for col in cols:
+                  text='\\n'.join(col)
+                  for m in re.finditer(r'QUESTÃO\\s+(\\d+)',text):
+                      n=int(m.group(1))
+                      if not 1<=n<=100: continue
+                      # stop at next question heading in same column
+                      nm=re.search(r'QUESTÃO\\s+\\d+',text[m.end():])
+                      end=m.end()+nm.start() if nm else len(text)
+                      seg=text[m.end():end].strip()
+                      seg=re.sub(r'PRIMEIRA EDIÇÃO','',seg)
+                      seg=re.sub(r'ÁREA LIVRE','',seg)
+                      questions.append({'numero':n,'pagina':page_no,'texto':seg})
+          # preserve first occurrence only
+          out={}
+          for q in questions:
+              out.setdefault(q['numero'],q)
+          with open('provas/2025/2025-1/2025_1_questions_raw.json','w',encoding='utf-8') as f:
+              json.dump([out[n] for n in sorted(out)],f,ensure_ascii=False,indent=2)
+          print('QUESTOES=',len(out),'MISSING=',[n for n in range(1,101) if n not in out])
+          PY
+      - name: Commit extracted data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "provas/2025/2025-1/2025_1_PV_objetiva_regular_raw.txt"
-          git commit -m "chore: add raw-order extraction of official 2025/1 proof" || exit 0
+          git add "provas/2025/2025-1/2025_1_questions_raw.json"
+          git commit -m "chore: reconstruct official 2025/1 questions by page columns" || exit 0
           git push
