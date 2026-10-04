@@ -60,7 +60,7 @@ const questoes = [
     "fonte": "INEP — Prova Objetiva 2025/1",
     "conteudoValidado": true,
     "pagina": 2,
-    "enunciado": "Homem de 62 anos vai a uma unidade de pronto atendimento (UPA) referindo cansaço e tontura ao se levantar há 2 semanas. Nega outras queixas, comorbidades ou cirurgias prévias, assim como o uso de medicamentos. Ao exame físico, apresenta-se corado, hidratado, lúcido e orientado em tempo e espaço; pressão arterial de 120 x 70 mmHg; frequência cardíaca de 45 bpm; saturação de O de 96% em ar ambiente; ritmo 2 cardíaco regular, sem turgência jugular; murmúrio vesicular fisiológico, sem ruídos acessórios; e enchimento capilar de 2 segundos. Diante disso, o médico solicita um eletrocardiograma de 12 derivações: A partir desse quadro clínico e da interpretação do eletrocardiograma, a conduta adequada consiste em",
+    "enunciado": "Homem de 62 anos vai a uma unidade de pronto atendimento (UPA) referindo cansaço e tontura ao se levantar há 2 semanas. Nega outras queixas, comorbidades ou cirurgias prévias, assim como o uso de medicamentos. Ao exame físico, apresenta-se corado, hidratado, lúcido e orientado em tempo e espaço; pressão arterial de 120 x 70 mmHg; frequência cardíaca de 45 bpm; saturação de O₂ de 96% em ar ambiente; ritmo cardíaco regular, sem turgência jugular; murmúrio vesicular fisiológico, sem ruídos acessórios; e enchimento capilar de 2 segundos. Diante disso, o médico solicita um eletrocardiograma de 12 derivações: A partir desse quadro clínico e da interpretação do eletrocardiograma, a conduta adequada consiste em",
     "alternativas": {
       "A": "conceder alta médica e encaminhar o paciente ao ambulatório especializado de cardiologia.",
       "B": "monitorizar o paciente, solicitar marca-passo transcutâneo e aguardar avaliação do cardiologista.",
@@ -78,7 +78,7 @@ const questoes = [
     "fonte": "INEP — Prova Objetiva 2025/1",
     "conteudoValidado": true,
     "pagina": 2,
-    "enunciado": "Homem de 42 anos, em uso crônico de anti-inflamatório não esteroide por doença reumática, dá entrada no pronto-socorro com 6 horas de evolução de dor epigástrica de forte intensidade. Sinais vitais: Exame Resultado Frequência cardíaca 110 bpm Pressão arterial 90 x 50 mmHg Frequência respiratória 22 irpm o Temperatura axilar 36,5 C Ao exame físico, abdome tenso, com descompressão brusca dolorosa nos quatro quadrantes. O hemograma apresenta valores dentro da normalidade e a tomografia de abdome evidencia líquido livre intraperitoneal com ar no recesso hepatofrênico. Nesse caso, assinale a alternativa que apresenta a principal hipótese diagnóstica.",
+    "enunciado": "Homem de 42 anos, em uso crônico de anti-inflamatório não esteroide por doença reumática, dá entrada no pronto-socorro com 6 horas de evolução de dor epigástrica de forte intensidade. Sinais vitais: Exame Resultado Frequência cardíaca 110 bpm Pressão arterial 90 x 50 mmHg Frequência respiratória 22 irpm Temperatura axilar 36,5 ºC Ao exame físico, abdome tenso, com descompressão brusca dolorosa nos quatro quadrantes. O hemograma apresenta valores dentro da normalidade e a tomografia de abdome evidencia líquido livre intraperitoneal com ar no recesso hepatofrênico. Nesse caso, assinale a alternativa que apresenta a principal hipótese diagnóstica.",
     "alternativas": {
       "A": "Úlcera gástrica perfurada.",
       "B": "Pancreatite aguda.",
@@ -150,7 +150,7 @@ const questoes = [
     "fonte": "INEP — Prova Objetiva 2025/1",
     "conteudoValidado": true,
     "pagina": 3,
-    "enunciado": "Mulher de 38 anos, com deficiência congênita de IgA, é atendida em ambulatório de clínica médica devido a insucesso terapêutico no tratamento de infecção por Helicobacter pylori. Apresentava diagnóstico de úlcera duodenal, tendo sido prescrito omeprazol, amoxicilina e claritromicina. Apesar da melhora clínica, observou-se persistência da infecção em teste 13 . Atribuiu-se o insucesso terapêutico ao respiratório com C uso recorrente de macrolídeos e fluoroquinolonas. Nesse caso, deve-se prescrever",
+    "enunciado": "Mulher de 38 anos, com deficiência congênita de IgA, é atendida em ambulatório de clínica médica devido a insucesso terapêutico no tratamento de infecção por Helicobacter pylori. Apresentava diagnóstico de úlcera duodenal, tendo sido prescrito omeprazol, amoxicilina e claritromicina. Apesar da melhora clínica, observou-se persistência da infecção em teste respiratório com C¹³. Atribuiu-se o insucesso terapêutico ao uso recorrente de macrolídeos e fluoroquinolonas. Nesse caso, deve-se prescrever",
     "alternativas": {
       "A": "pantoprazol, amoxicilina e levofloxacino por 7 dias.",
       "B": "omeprazol, claritromicina e levofloxacino por 14 dias.",
