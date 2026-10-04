@@ -1,3 +1,17 @@
+# Changelog
+
+## v0.4.0 — Nova arquitetura visual e navegação
+- Criada página inicial tipo hub com botões grandes para as áreas do Projeto Revalida.
+- Apenas o Banco de Questões está ativo; demais módulos aparecem visualmente desabilitados.
+- Banco de Questões passou a abrir uma tela própria com uma edição por linha.
+- 2025/1 e 2025/2 são as únicas edições ativas neste momento.
+- Demais edições permanecem listadas, porém apagadas/desabilitadas.
+- Criada tela individual da edição com as 100 questões numeradas.
+- Cada questão recebeu rota permanente no padrão `2025/2025.1/q001` e `2025/2025.2/q001`.
+- Criado roteamento via `404.html` para manter essas URLs profundas funcionando no GitHub Pages.
+- Questões ainda não transcritas não recebem texto inventado; a página informa que o conteúdo está em validação.
+- Gabaritos já registrados continuam sendo exibidos, inclusive questões anuladas.
+
 # CHANGELOG — Projeto Revalida
 
 ## v0.3.0 — Foco 2025/1 e 2025/2
