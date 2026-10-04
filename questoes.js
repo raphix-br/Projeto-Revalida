@@ -1,4 +1,32 @@
-const db_questoes = [
+// Banco de dados do Projeto Revalida.
+// Fonte oficial de referência: https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/revalida/provas-e-gabaritos
+// Regra: não duplicar questões em HTML. Todo conteúdo de questão fica aqui.
+
+const FONTE_INEP = "https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/revalida/provas-e-gabaritos";
+
+const edicoes = [
+  { id: "2011", nome: "2011", ano: 2011, periodo: "anual", objetivasEsperadas: 100 },
+  { id: "2012", nome: "2012", ano: 2012, periodo: "anual", objetivasEsperadas: 100 },
+  { id: "2013", nome: "2013", ano: 2013, periodo: "anual", objetivasEsperadas: 100 },
+  { id: "2014", nome: "2014", ano: 2014, periodo: "anual", objetivasEsperadas: 100 },
+  { id: "2015", nome: "2015", ano: 2015, periodo: "anual", objetivasEsperadas: 100 },
+  { id: "2016", nome: "2016", ano: 2016, periodo: "anual", objetivasEsperadas: 100 },
+  { id: "2017", nome: "2017", ano: 2017, periodo: "anual", objetivasEsperadas: 100 },
+  { id: "2020", nome: "2020", ano: 2020, periodo: "anual", objetivasEsperadas: 100 },
+  { id: "2021", nome: "2021", ano: 2021, periodo: "anual", objetivasEsperadas: 100 },
+  { id: "2022-1", nome: "2022/1", ano: 2022, periodo: "semestral", objetivasEsperadas: 100 },
+  { id: "2022-2", nome: "2022/2", ano: 2022, periodo: "semestral", objetivasEsperadas: 100 },
+  { id: "2023-1", nome: "2023/1", ano: 2023, periodo: "semestral", objetivasEsperadas: 100 },
+  { id: "2023-2", nome: "2023/2", ano: 2023, periodo: "semestral", objetivasEsperadas: 100 },
+  { id: "2024-1", nome: "2024/1", ano: 2024, periodo: "semestral", objetivasEsperadas: 100 },
+  { id: "2024-2", nome: "2024/2", ano: 2024, periodo: "semestral", objetivasEsperadas: 100 },
+  { id: "2025-1", nome: "2025/1", ano: 2025, periodo: "semestral", objetivasEsperadas: 100 },
+  { id: "2025-2", nome: "2025/2", ano: 2025, periodo: "semestral", objetivasEsperadas: 100 },
+  { id: "2026-1", nome: "2026/1", ano: 2026, periodo: "semestral", objetivasEsperadas: 100 },
+  { id: "2026-2", nome: "2026/2", ano: 2026, periodo: "semestral", objetivasEsperadas: 100 }
+];
+
+const questoes = [
     {
         numero: 1, edicao: "2025/1", grupo: "GINECOLOGIA E OBSTETRICIA", subgrupo: "OBSTETRICIA", tema: "PRÉ-ECLÂMPSIA",
         text: "Uma mulher com 32 anos de idade, primigesta, com idade gestacional de 38 semanas, apresenta cefaleia holocraniana forte, epigastralgia e visão turva. PA = 165 x 110 mmHg. Proteinúria (+++/4+). Qual a conduta?",
@@ -295,7 +323,11 @@ const db_questoes = [
         options: ["A) 18%.", "B) 27%.", "C) 36%.", "D) 45%."],
         gabarito: "B"
     }
-	{
+];
+
+// Conteúdos futuros não fazem parte do banco de questões.
+const treinamentos = [
+{
     id: "ped_001",
     tema: "Pneumonia na Infância",
     area: "Pediatria",
@@ -334,3 +366,12 @@ const db_questoes = [
     }
 },
 ];
+
+// Metadados derivados para evitar repetição dentro de cada questão.
+for (const q of questoes) {
+  q.id = `${q.edicao.replace("/","-")}-${String(q.numero).padStart(3, "0")}`;
+  q.tags = [...new Set([q.grupo, q.subgrupo, q.tema, ...(q.gabarito === "-" ? ["anulada"] : [])].filter(Boolean))];
+  q.tipo = "objetiva";
+}
+
+if (typeof module !== "undefined") module.exports = { FONTE_INEP, edicoes, questoes, treinamentos };
