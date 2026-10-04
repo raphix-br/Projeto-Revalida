@@ -22,11 +22,11 @@
 const qtdPorEdicao=Object.fromEntries(edicoes.map(e=>[e.id,questoes.filter(q=>q.edicao.replace("/","-")===e.id).length]));
 const gabPorEdicao=Object.fromEntries(edicoes.map(e=>[e.id,questoes.filter(q=>q.edicao.replace("/","-")===e.id && q.gabarito).length]));
 const resumo=document.getElementById("resumo");
-resumo.textContent=`${questoes.length} questões importadas • ${edicoes.length} edições catalogadas`;
+resumo.textContent=`${questoes.length} questões importadas • ${edicoes.length} edições catalogadas • validação oficial ainda em andamento`;
 document.getElementById("lista").innerHTML=edicoes.map(e=>{
  const n=qtdPorEdicao[e.id]||0,g=gabPorEdicao[e.id]||0;
  const qStatus=n===e.objetivasEsperadas?"🟢 completa":n?"🟡 parcial":"⚪ não iniciada";
- const gStatus=n===0?"⚪ não iniciado":g===n?"🟡 armazenado":"🟠 incompleto";
+ const gStatus=n===0?"⚪ não iniciado":g===n?"🟡 armazenado · não validado":"🟠 incompleto";
  return `<article class="edicao">
    <div class="nome">${e.nome}</div>
    <div class="status"><span class="pill">Questões: ${n}/${e.objetivasEsperadas} — ${qStatus}</span><span class="pill">Gabarito: ${g}/${n} — ${gStatus}</span></div>
