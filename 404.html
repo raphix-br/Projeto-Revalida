@@ -1,3 +1,75 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Questão · Projeto Revalida</title><style>:root{--bg:#07111f;--panel:#0d1b2e;--line:#1d3553;--text:#eef5ff;--muted:#8fa6c2;--accent:#4da3ff}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Arial}.wrap{width:min(850px,calc(100% - 36px));margin:70px auto}header{padding:18px 28px;border-bottom:1px solid var(--line)}a{color:var(--accent);text-decoration:none}.crumb{color:var(--muted);font-size:.85rem}.card{margin-top:20px;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:30px}h1{font-size:2.5rem}.notice{border:1px dashed var(--line);padding:20px;border-radius:12px;color:var(--muted);line-height:1.6}.key{margin-top:22px;color:var(--muted)}.key strong{color:var(--text)}.nav{display:flex;justify-content:space-between;margin-top:20px}.btn{border:1px solid var(--line);padding:10px 15px;border-radius:9px}</style></head><body><header><a href="../../../treino_revalida.html">← Projeto Revalida</a></header><main class="wrap"><div class="crumb" id="crumb"></div><section class="card"><h1 id="title"></h1><div class="notice">Esta página já possui endereço permanente, mas o enunciado e as alternativas ainda estão sendo transcritos e validados diretamente do caderno oficial do INEP. Não foi inventado conteúdo para preencher esta etapa.</div><div class="key" id="key"></div></section><nav class="nav"><a id="prev" class="btn">← Anterior</a><a id="next" class="btn">Próxima →</a></nav></main><script src="../../../questoes.js"></script><script>
-const m=location.pathname.match(/\/2025\/(2025\.1|2025\.2)\/q(\d{3})\/?$/);if(m){const ed=m[1].replace(".","/"),n=Number(m[2]),gab=gabaritosOficiais[ed]||gabaritosPreliminares[ed]||{};document.getElementById("title").textContent="Questão "+n;document.getElementById("crumb").innerHTML='<a href="../../../treino_revalida.html">Banco de Questões</a> / <a href="../../../edicao.html?edicao='+ed.replace("/","-")+'">'+ed+'</a> / Q'+String(n).padStart(3,"0");document.getElementById("key").innerHTML="Gabarito registrado: <strong>"+(gab[n]||"não informado")+"</strong>"+(gab[n]==="-"?" · anulada":"");if(n>1)document.getElementById("prev").href="../q"+String(n-1).padStart(3,"0");else document.getElementById("prev").style.visibility="hidden";if(n<100)document.getElementById("next").href="../q"+String(n+1).padStart(3,"0");else document.getElementById("next").style.visibility="hidden"}else{document.getElementById("title").textContent="Página não encontrada";document.getElementById("key").textContent="Endereço não reconhecido."}
-</script></body></html>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Questão · Projeto Revalida</title>
+<style>
+:root{--bg:#07111f;--panel:#0d1b2e;--line:#1d3553;--text:#eef5ff;--muted:#8fa6c2;--accent:#4da3ff;--ok:#70e1a2}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Arial;line-height:1.6}
+.wrap{width:min(850px,calc(100% - 28px));margin:28px auto}
+header{padding:16px 0;border-bottom:1px solid var(--line)}
+a{color:var(--accent);text-decoration:none}
+.crumb{color:var(--muted);font-size:.85rem;margin:12px 0}
+.card{margin-top:18px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px}
+h1{font-size:2rem;margin:0 0 6px}
+.meta{color:var(--muted);font-size:.9rem;margin-bottom:22px}
+.stem{font-size:1.04rem;white-space:pre-wrap}
+.option{margin:12px 0;padding:13px 15px;border:1px solid var(--line);border-radius:10px}
+.option strong{display:inline-block;width:28px;color:var(--accent)}
+.key{margin-top:22px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted)}
+.key strong{color:var(--ok)}
+.original{margin-top:16px;padding:12px 14px;border:1px dashed var(--line);border-radius:10px;color:var(--muted)}
+.nav{display:flex;justify-content:space-between;gap:12px;margin-top:18px}
+.btn{border:1px solid var(--line);padding:10px 15px;border-radius:9px}
+.btn:hover{border-color:var(--accent)}
+@media(max-width:600px){.wrap{width:min(100% - 18px,850px)}.card{padding:18px}h1{font-size:1.6rem}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a href="../../../treino_revalida.html">← Projeto Revalida</a></div></header>
+<main class="wrap">
+<div class="crumb" id="crumb"></div>
+<section class="card">
+<h1 id="title"></h1>
+<div class="meta" id="meta"></div>
+<div class="stem" id="stem"></div>
+<div id="options"></div>
+<div class="key" id="key"></div>
+<div class="original" id="original"></div>
+</section>
+<nav class="nav"><a id="prev" class="btn">← Anterior</a><a id="next" class="btn">Próxima →</a></nav>
+</main>
+<script src="../../../questoes.js"></script>
+<script>
+const m=location.pathname.match(/\/2025\/(2025\.1|2025\.2)\/q(\d{3})\/?$/);
+if(m){
+  const ed=m[1].replace(".","/"), n=Number(m[2]);
+  const list=Array.isArray(questoes)?questoes:[];
+  const q=list.find(x=>x.edicao===ed&&Number(x.numero)===n);
+  const gab=(gabaritosOficiais[ed]||gabaritosPreliminares[ed]||{})[n];
+  document.getElementById("title").textContent="Questão "+n;
+  document.getElementById("crumb").innerHTML='<a href="../../../treino_revalida.html">Banco de Questões</a> / <a href="../../../edicao.html?edicao='+ed.replace("/","-")+'">'+ed+'</a> / Q'+String(n).padStart(3,"0");
+  if(q){
+    document.getElementById("meta").textContent=(q.anulada?"Questão anulada · ":"")+"Fonte: INEP — Prova Objetiva "+ed;
+    document.getElementById("stem").textContent=q.enunciado||"Enunciado não disponível.";
+    const opts=document.getElementById("options");
+    for(const letter of ["A","B","C","D"]){
+      const div=document.createElement("div");div.className="option";
+      const strong=document.createElement("strong");strong.textContent=letter;
+      div.appendChild(strong);div.appendChild(document.createTextNode(q.alternativas?.[letter]||""));
+      opts.appendChild(div);
+    }
+    document.getElementById("original").innerHTML='<a href="../../../provas/2025/2025-1/2025_1_PV_objetiva_regular.pdf#page='+q.pagina+'" target="_blank">Abrir página original do caderno (página '+q.pagina+')</a> — útil para conferir figuras, tabelas e imagens.';
+  }else{
+    document.getElementById("meta").textContent="Conteúdo ainda não importado para esta edição.";
+    document.getElementById("stem").textContent="Esta questão ainda não possui conteúdo disponível.";
+  }
+  document.getElementById("key").innerHTML="Gabarito definitivo: <strong>"+(gab||q?.gabarito||"não informado")+"</strong>"+((gab||q?.gabarito)==="-"?" · anulada":"");
+  if(n>1)document.getElementById("prev").href="../q"+String(n-1).padStart(3,"0");else document.getElementById("prev").style.visibility="hidden";
+  if(n<100)document.getElementById("next").href="../q"+String(n+1).padStart(3,"0");else document.getElementById("next").style.visibility="hidden";
+}else{document.getElementById("title").textContent="Página não encontrada";document.getElementById("meta").textContent="Endereço não reconhecido.";}
+</script>
+</body>
+</html>
