@@ -21,17 +21,21 @@ jobs:
           if (!Array.isArray(edicoes) || !Array.isArray(questoes)) throw new Error('edicoes/questoes inválidos');
           const ids = new Set();
           for (const q of questoes) {
-            for (const key of ['id','numero','edicao','grupo','subgrupo','tema','text','options','gabarito','tags','tipo']) {
+            for (const key of ['id','numero','edicao','gabarito','tags','tipo','enunciado','alternativas']) {
               if (!(key in q)) throw new Error('Campo ausente: ' + key + ' em ' + JSON.stringify(q));
             }
-            if (!Array.isArray(q.options) || q.options.length === 0) throw new Error('Alternativas inválidas: ' + q.id);
+            if (!q.enunciado.trim()) throw new Error('Enunciado vazio: ' + q.id);
+            if (!q.alternativas || Object.keys(q.alternativas).length !== 4) throw new Error('Alternativas inválidas: ' + q.id);
             if (!Array.isArray(q.tags)) throw new Error('Tags inválidas: ' + q.id);
             if (ids.has(q.id)) throw new Error('ID duplicado: ' + q.id);
             ids.add(q.id);
             if (!edicoes.some(e => e.nome === q.edicao)) throw new Error('Edição não catalogada: ' + q.edicao);
           }
+          const q251 = questoes.filter(q => q.edicao === '2025/1');
+          if (q251.length !== 100) throw new Error('2025/1 deve ter 100 questões; encontrou ' + q251.length);
+          if (q251.some(q => !q.pagina)) throw new Error('Questão 2025/1 sem página original');
           for (const e of edicoes) {
             if (e.objetivasEsperadas !== 100) throw new Error('Expectativa inválida em ' + e.nome);
           }
-          console.log('OK:', questoes.length, 'questões;', edicoes.length, 'edições.');
+          console.log('OK:', questoes.length, 'questões;', q251.length, 'questões 2025/1 importadas.');
           NODE
