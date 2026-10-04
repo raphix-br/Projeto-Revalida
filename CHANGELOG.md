@@ -14,6 +14,7 @@
 - Removida a duplicação do banco que existia no `index.html`.
 - `index.html` passou a funcionar como biblioteca das edições.
 - `treino_revalida.html` passou a consultar exclusivamente `questoes.js`.
+- A biblioteca passou a distinguir gabarito armazenado de gabarito oficialmente validado.
 - Adicionada validação automática com GitHub Actions.
 - Criada documentação de contexto para colaboração entre IAs.
 
