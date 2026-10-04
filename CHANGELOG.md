@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.4.1 — Fila vertical responsiva
+- Alterada a tela da edição de grade de 100 botões para **fila vertical contínua**.
+- Cada questão agora ocupa uma linha/cartão próprio, permitindo rolagem natural.
+- Reduzida a largura máxima do conteúdo para melhorar leitura em desktop.
+- Layout preparado primeiro para **celular e tablet**, mantendo boa leitura em telas maiores.
+- Cabeçalho permanece compacto e fixo durante a rolagem.
+- Mantidas as rotas permanentes individuais de cada questão.
+- Mantida a indicação visual de questões anuladas.
+- Quando o conteúdo real estiver presente em `questoes.js`, o enunciado passa a aparecer automaticamente no cartão.
+- Nenhum enunciado foi inventado para preencher a interface.
+
 ## v0.4.0 — Nova arquitetura visual e navegação
 - Criada página inicial tipo hub com botões grandes para as áreas do Projeto Revalida.
 - Apenas o Banco de Questões está ativo; demais módulos aparecem visualmente desabilitados.
