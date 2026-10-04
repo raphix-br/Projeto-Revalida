@@ -8,6 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Install PDF tools
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
       - name: Extract text
         run: |
           pdftotext -layout "provas/2025/2025-1/2025_1_PV_objetiva_regular.pdf" "/tmp/prova.txt"
