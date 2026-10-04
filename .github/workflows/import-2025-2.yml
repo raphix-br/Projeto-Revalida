@@ -12,7 +12,7 @@ jobs:
         run: sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
       - name: Extract PDF layout XML
         run: |
-          pdftotext -bbox-layout "provas/2025/2025-2/2025_2_caderno_1_preliminar.pdf" /tmp/prova.xml
+          pdftotext -layout "provas/2025/2025-2/2025_2_caderno_1_preliminar.pdf" /tmp/prova.txt
       - name: Reconstruct questions
         run: python3 scripts/reconstruct_revalida_2025_2.py
       - name: Commit extracted data
