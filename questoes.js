@@ -3845,7 +3845,9 @@ const questoes = [
     },
     "revisaoVisual": false
   }
-];\n\n// Conteúdos futuros não fazem parte do banco de questões.
+]; 
+
+// Conteúdos futuros não fazem parte do banco de questões.
 const treinamentos = [
 {
     id: "ped_001",
