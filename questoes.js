@@ -4086,7 +4086,7 @@ const treinamentos = [
 // Metadados derivados para evitar repetição dentro de cada questão.
 for (const q of questoes) {
   q.id = `${q.edicao.replace("/","-")}-${String(q.numero).padStart(3, "0")}`;
-  q.tags = [...new Set([q.grupo, q.subgrupo, q.tema, ...(q.gabarito === "-" ? ["anulada"] : [])].filter(Boolean))];
+  q.tags = [...new Set([q.area, q.grupo, q.subgrupo, q.tema, q.subtema, ...(q.gabarito === "-" ? ["anulada"] : [])].filter(Boolean))];
   q.tipo = "objetiva";
 }
 
