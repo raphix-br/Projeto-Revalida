@@ -1,3 +1,13 @@
+## v0.7.0 — Navegação e interface do banco 2025
+- Corrigida a navegação entre biblioteca, edição e questão.
+- Corrigida a referência ao PDF original da edição 2025/2.
+- Lista de questões reduzida a uma linha compacta por questão.
+- Reservado visualmente o futuro espaço de Área · Tema · Subtema, sem implementar o sistema de tags.
+- 2025/2 passa a exibir claramente “gabarito a confirmar”.
+- Melhorados responsividade, contraste, espaçamento e estados de navegação.
+- Estrutura futura de classificação preparada em `questoes.js`.
+- Versão atualizada para **v0.7.0**.
+
 ## v0.6.0 — Questões 2025/2 disponíveis
 - Importadas as **100 questões objetivas do Caderno 01 da edição 2025/2** a partir do PDF oficial presente no repositório.
 - As rotas permanentes `2025/2025.2/q001` até `q100` passam a exibir enunciado e alternativas.
