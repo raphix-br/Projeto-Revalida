@@ -22,26 +22,26 @@ header a{color:var(--text);text-decoration:none}
 .legend{color:var(--muted);font-size:.82rem;margin:0 0 18px}
 .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);margin:0 6px 0 2px}
 .dot.red{background:var(--red);margin-left:14px}
-.queue{display:flex;flex-direction:column;gap:14px}
-.q{display:block;border:1px solid var(--line);border-radius:14px;background:var(--panel);color:var(--text);text-decoration:none;padding:18px 20px;transition:border-color .15s,transform .15s,background .15s}
-.q:hover{border-color:var(--accent);background:var(--panel2);transform:translateY(-1px)}
-.q-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
-.q-number{font-size:.82rem;font-weight:900;letter-spacing:.12em;color:var(--accent)}
-.q-status{font-size:.72rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.queue{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.q{min-height:50px;display:grid;grid-template-columns:66px 1fr auto;align-items:center;gap:10px;border-bottom:1px solid var(--line);border-radius:0;background:transparent;color:var(--text);text-decoration:none;padding:0 10px;transition:border-color .12s,background .12s}
+.q:hover{border-color:var(--accent);background:var(--panel2)}
+.q-head{display:contents}
+.q-number{font-size:.76rem;font-weight:900;letter-spacing:.09em;color:var(--accent)}
+.q-status{font-size:.62rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
 .q-status.ann{color:var(--red)}
-.q-title{font-size:1rem;font-weight:750}
-.q-note{margin-top:6px;color:var(--muted);font-size:.84rem;line-height:1.45}
+.q-title{font-size:.84rem;font-weight:650;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.q-note{margin:0;color:var(--muted);font-size:.68rem;white-space:nowrap}
 @media(max-width:600px){
   header{padding:12px 14px;font-size:.88rem}
   .wrap{width:min(100% - 20px,820px);margin-top:22px}
-  .q{padding:16px}
+  .q{padding:0 7px;min-height:47px;grid-template-columns:53px 1fr auto}.q-title{font-size:.76rem}.q-note{font-size:.56rem}
   .q-title{font-size:.96rem}
 }
 </style>
 </head>
 <body>
 <header>
-  <a href="treino_revalida.html">← Edições</a>
+  <a href="./treino_revalida.html">← Edições</a>
   <span>Banco de Questões</span>
 </header>
 
@@ -49,7 +49,7 @@ header a{color:var(--text);text-decoration:none}
   <section class="top">
     <div class="eyebrow">Revalida <span id="ed"></span></div>
     <h1>100 questões</h1>
-    <p>Fila contínua de questões. O conteúdo ocupa uma única coluna para facilitar leitura, rolagem e uso em celular ou tablet.</p>
+    <p>Uma questão por linha. A classificação por área, tema e subtema será adicionada posteriormente.</p>
     <div class="actions">
       <a href="treino_revalida.html">Trocar edição</a>
       <a href="#q001">Ir para Q001</a>
@@ -80,9 +80,9 @@ document.getElementById("queue").innerHTML=Array.from({length:100},(_,i)=>{
   const s=String(n).padStart(3,"0");
   const anulada=gab[n]==="-";
   const q=byNumber[n];
-  const titulo=q?.enunciado ? esc(q.enunciado.replace(/\s+/g," ").trim()) : "Questão "+s;
-  const nota=q?.enunciado ? "" : "Conteúdo da questão será exibido aqui após a importação validada do caderno oficial.";
-  return `<a id="q${s}" class="q" href="2025/${ed.replace("/",".")}/q${s}">
+  const titulo=q?.enunciado ? esc(q.enunciado.replace(/\s+/g," ").trim()) : "Conteúdo da questão";
+  const nota="Área · Tema · Subtema";
+  return `<a id="q${s}" class="q" href="./2025/${ed.replace("/",".")}/q${s}">
     <div class="q-head">
       <span class="q-number">Q${s}</span>
       <span class="q-status ${anulada?"ann":""}">${anulada?"Anulada":"Questão objetiva"}</span>
