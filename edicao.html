@@ -83,12 +83,9 @@ document.getElementById("queue").innerHTML=Array.from({length:100},(_,i)=>{
   const titulo=q?.enunciado ? esc(q.enunciado.replace(/\s+/g," ").trim()) : "Conteúdo da questão";
   const nota="Área · Tema · Subtema";
   return `<a id="q${s}" class="q" href="./2025/${ed.replace("/",".")}/q${s}">
-    <div class="q-head">
-      <span class="q-number">Q${s}</span>
-      <span class="q-status ${anulada?"ann":""}">${anulada?"Anulada":"Questão objetiva"}</span>
-    </div>
-    <div class="q-title">${titulo}</div>
-    ${nota?`<div class="q-note">${nota}</div>`:""}
+    <span class="q-number">Q${s}</span>
+    <span class="q-title">${titulo}</span>
+    <span class="q-meta"><span class="q-status ${anulada?"ann":""}">${anulada?"Anulada":"Disponível"}</span><span class="q-note">${nota}</span></span>
   </a>`;
 }).join("");
 </script>
