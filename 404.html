@@ -28,7 +28,7 @@ h1{font-size:2rem;margin:0 0 6px}
 </style>
 </head>
 <body>
-<header><div class="wrap"><a href="../../../treino_revalida.html">← Projeto Revalida</a></div></header>
+<header><div class="wrap"><a id="back" href="../../../treino_revalida.html">← Projeto Revalida</a></div></header>
 <main class="wrap">
 <div class="crumb" id="crumb"></div>
 <section class="card">
@@ -45,6 +45,7 @@ h1{font-size:2rem;margin:0 0 6px}
 <script>
 const m=location.pathname.match(/\/2025\/(2025\.1|2025\.2)\/q(\d{3})\/?$/);
 if(m){
+  document.getElementById("back").href="../../../treino_revalida.html";
   const ed=m[1].replace(".","/"), n=Number(m[2]);
   const list=Array.isArray(questoes)?questoes:[];
   const q=list.find(x=>x.edicao===ed&&Number(x.numero)===n);
@@ -61,12 +62,12 @@ if(m){
       div.appendChild(strong);div.appendChild(document.createTextNode(q.alternativas?.[letter]||""));
       opts.appendChild(div);
     }
-    document.getElementById("original").innerHTML='<a href="../../../provas/2025/2025-1/2025_1_PV_objetiva_regular.pdf#page='+q.pagina+'" target="_blank">Abrir página original do caderno (página '+q.pagina+')</a> — útil para conferir figuras, tabelas e imagens.';
+    const folder=ed==="2025/2"?"2025-2":"2025-1"; const pdf=ed==="2025/2"?"2025_2_caderno_1_preliminar.pdf":"2025_1_PV_objetiva_regular.pdf"; document.getElementById("original").innerHTML='<a href="../../../provas/2025/'+folder+'/'+pdf+'#page='+q.pagina+'" target="_blank" rel="noopener">Abrir página original do caderno (página '+q.pagina+')</a> — útil para conferir figuras, tabelas e imagens.';
   }else{
     document.getElementById("meta").textContent="Conteúdo ainda não importado para esta edição.";
     document.getElementById("stem").textContent="Esta questão ainda não possui conteúdo disponível.";
   }
-  document.getElementById("key").innerHTML="Gabarito definitivo: <strong>"+(gab||q?.gabarito||"não informado")+"</strong>"+((gab||q?.gabarito)==="-"?" · anulada":"");
+  document.getElementById("key").innerHTML="Gabarito: <strong>"+(gab||q?.gabarito||"não informado")+"</strong>"+(ed==="2025/2"?" · <strong>gabarito a confirmar</strong>":"")+((gab||q?.gabarito)==="-"?" · anulada":"");
   if(n>1)document.getElementById("prev").href="../q"+String(n-1).padStart(3,"0");else document.getElementById("prev").style.visibility="hidden";
   if(n<100)document.getElementById("next").href="../q"+String(n+1).padStart(3,"0");else document.getElementById("next").style.visibility="hidden";
 }else{document.getElementById("title").textContent="Página não encontrada";document.getElementById("meta").textContent="Endereço não reconhecido.";}
