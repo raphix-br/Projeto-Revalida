@@ -27,14 +27,14 @@ header a{color:var(--text);text-decoration:none}
 .q:hover{border-color:var(--accent);background:var(--panel2)}
 .q-head{display:contents}
 .q-number{font-size:.76rem;font-weight:900;letter-spacing:.09em;color:var(--accent)}
-.q-status{font-size:.62rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.q-status{font-size:.62rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
 .q-status.ann{color:var(--red)}
 .q-title{font-size:.84rem;font-weight:650;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.q-note{margin:0;color:var(--muted);font-size:.68rem;white-space:nowrap}
+.q-note{color:#58718b;font-size:.62rem;white-space:nowrap;border:1px dashed #29445f;border-radius:999px;padding:3px 6px}.q-meta{display:flex;align-items:center;justify-content:flex-end;gap:7px}
 @media(max-width:600px){
   header{padding:12px 14px;font-size:.88rem}
   .wrap{width:min(100% - 20px,820px);margin-top:22px}
-  .q{padding:0 7px;min-height:47px;grid-template-columns:53px 1fr auto}.q-title{font-size:.76rem}.q-note{font-size:.56rem}
+  .q{padding:0 7px;min-height:47px;grid-template-columns:53px 1fr auto}.q-title{font-size:.76rem}.q-note{display:none}
   .q-title{font-size:.96rem}
 }
 </style>
