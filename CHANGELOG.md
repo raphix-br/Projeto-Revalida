@@ -1,3 +1,9 @@
+## v0.8.2 — Diagnóstico de carregamento do banco
+- A lista da edição agora mostra uma mensagem clara quando `questoes.js` não carrega ou quando a edição não possui dados, em vez de exibir 100 links vazios.
+- A página individual distingue falha no carregamento do banco de uma questão ainda não importada.
+- Quando a questão não existe no banco, a tela oferece retorno à edição e não apresenta gabarito ou conteúdo fictício.
+- Mantida a navegação pela página inicial no cabeçalho, a numeração destacada de dois dígitos e a área reservada para futuras tags.
+
 ## v0.8.1 — Correção de caminhos e renderização
 - Links internos agora usam caminhos relativos, evitando falhas quando a plataforma é publicada em um caminho-base diferente.
 - O nome do projeto no cabeçalho continua levando à página inicial em todas as telas.
