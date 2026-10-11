@@ -4086,7 +4086,10 @@ const treinamentos = [
 // Metadados derivados para evitar repetição dentro de cada questão.
 for (const q of questoes) {
   q.id = `${q.edicao.replace("/","-")}-${String(q.numero).padStart(3, "0")}`;
-  q.tags = [...new Set([q.area, q.grupo, q.subgrupo, q.tema, q.subtema, ...(q.gabarito === "-" ? ["anulada"] : [])].filter(Boolean))];
+  const textoQuestao = [q.enunciado, ...Object.values(q.alternativas || {})].join(" ");
+  const mencionaImagem = q.temImagem === true || q.revisaoVisual === true || /imagem (?:a seguir|abaixo|acima)|figura (?:a seguir|abaixo|acima)|fotografia|gráfico (?:a seguir|abaixo|acima)|apresenta a seguinte (?:radiografia|fotografia|imagem)|observe (?:a imagem|a figura|o gráfico)|conforme (?:a imagem|a figura)/i.test(textoQuestao);
+  q.tags = [...new Set([q.area, q.grupo, q.subgrupo, q.tema, q.subtema, ...(mencionaImagem ? ["Imagem"] : []), ...(q.gabarito === "-" ? ["anulada"] : [])].filter(Boolean))];
+  q.temImagem = mencionaImagem;
   q.tipo = "objetiva";
 }
 
