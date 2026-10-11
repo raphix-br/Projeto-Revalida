@@ -1,3 +1,13 @@
+## v0.8.0 — Fases e navegação revisada
+- Criada nova página inicial com opções Fase 1 e Fase 2.
+- Fase 1 encaminha à página de ferramentas de estudo existente; Fase 2 tem página própria em desenvolvimento.
+- Cabeçalho fixo com o nome do projeto no canto superior direito, sempre ligado à página inicial.
+- Corrigida a navegação das questões para usar a página explícita `questao.html` com parâmetros, evitando depender da resposta 404 para renderizar o banco.
+- Lista da edição exibe apenas números destacados de dois dígitos, com espaço reservado para futuras tags.
+- Questão individual com navegação anterior/próxima e link ao PDF original.
+- Adicionado espaço de rolagem à direita e reforçada a consistência dos caminhos do GitHub Pages.
+- Banco de dados de questões preservado; nenhuma questão foi reescrita nesta versão.
+
 ## v0.7.0 — Navegação e interface do banco 2025
 - Corrigida a navegação entre biblioteca, edição e questão.
 - Corrigida a referência ao PDF original da edição 2025/2.
@@ -7,100 +17,3 @@
 - Melhorados responsividade, contraste, espaçamento e estados de navegação.
 - Estrutura futura de classificação preparada em `questoes.js`.
 - Versão atualizada para **v0.7.0**.
-
-## v0.6.0 — Questões 2025/2 disponíveis
-- Importadas as **100 questões objetivas do Caderno 01 da edição 2025/2** a partir do PDF oficial presente no repositório.
-- As rotas permanentes `2025/2025.2/q001` até `q100` passam a exibir enunciado e alternativas.
-- Questões que atravessam as duas colunas do PDF foram reconstruídas por posição visual para evitar mistura entre itens.
-- Foram tratados artefatos de tabelas, numeração de página e do questionário de percepção.
-- Q7, Q9, Q11, Q43, Q55, Q85 e Q87 estão marcadas como anuladas no banco importado.
-- O banco preserva também o **gabarito preliminar do INEP** em `gabaritoPreliminar`; o status da edição permanece `importada-preliminar` até haver fonte oficial definitiva incorporada ao projeto.
-- A página individual prioriza o status da própria questão, inclusive anulação, em vez de sobrescrever o resultado com o mapa preliminar.
-- O banco agora contém **200 questões importadas**: 100 de 2025/1 e 100 de 2025/2.
-- Versão atualizada para **v0.6.0**.
-
-## v0.5.0 — Questões 2025/1 disponíveis
-- Importadas as **100 questões objetivas de 2025/1** diretamente do caderno oficial do INEP presente no repositório.
-- Cada questão agora possui **enunciado, quatro alternativas, página original e gabarito definitivo**.
-- Q7 e Q23 permanecem corretamente marcadas como anuladas.
-- As rotas permanentes `2025/2025.1/q001` até `q100` agora exibem o conteúdo da questão.
-- A página individual mantém link para a página correspondente do caderno oficial, permitindo conferir figuras, tabelas e elementos gráficos.
-- A fila da edição passou a exibir os enunciados importados.
-- Corrigidos artefatos de extração de caracteres sobrescritos/subscritos identificados durante a importação.
-- Criada rotina automatizada de reconstrução das duas colunas do PDF para evitar mistura entre questões.
-- Atualizada a validação automática do banco para o novo formato de enunciado + alternativas.
-- Versão do projeto atualizada para **v0.5.0**.
-- A edição 2025/2 continua no escopo, mas ainda não foi preenchida com conteúdo definitivo.
-
-## v0.4.2 — Identificação das 100 questões de 2025/1
-- Identificadas as **100 questões objetivas** da edição 2025/1 em `questoes.js`.
-- Cada registro foi associado à edição, número da questão, gabarito definitivo e indicação de anulação.
-- Q7 e Q23 permanecem identificadas como anuladas.
-- As questões foram deliberadamente marcadas com `conteudoValidado: false`: identificação não equivale a transcrição validada.
-- Nenhum enunciado, alternativa ou mídia foi inventado ou preenchido por aproximação.
-- Próxima etapa: importar e validar **enunciado + alternativas + mídia** diretamente do caderno oficial.
-
-# Changelog
-
-## v0.4.1 — Fila vertical responsiva
-- Alterada a tela da edição de grade de 100 botões para **fila vertical contínua**.
-- Cada questão agora ocupa uma linha/cartão próprio, permitindo rolagem natural.
-- Reduzida a largura máxima do conteúdo para melhorar leitura em desktop.
-- Layout preparado primeiro para **celular e tablet**, mantendo boa leitura em telas maiores.
-- Cabeçalho permanece compacto e fixo durante a rolagem.
-- Mantidas as rotas permanentes individuais de cada questão.
-- Mantida a indicação visual de questões anuladas.
-- Quando o conteúdo real estiver presente em `questoes.js`, o enunciado passa a aparecer automaticamente no cartão.
-- Nenhum enunciado foi inventado para preencher a interface.
-
-## v0.4.0 — Nova arquitetura visual e navegação
-- Criada página inicial tipo hub com botões grandes para as áreas do Projeto Revalida.
-- Apenas o Banco de Questões está ativo; demais módulos aparecem visualmente desabilitados.
-- Banco de Questões passou a abrir uma tela própria com uma edição por linha.
-- 2025/1 e 2025/2 são as únicas edições ativas neste momento.
-- Demais edições permanecem listadas, porém apagadas/desabilitadas.
-- Criada tela individual da edição com as 100 questões numeradas.
-- Cada questão recebeu rota permanente no padrão `2025/2025.1/q001` e `2025/2025.2/q001`.
-- Criado roteamento via `404.html` para manter essas URLs profundas funcionando no GitHub Pages.
-- Questões ainda não transcritas não recebem texto inventado; a página informa que o conteúdo está em validação.
-- Gabaritos já registrados continuam sendo exibidos, inclusive questões anuladas.
-
-# CHANGELOG — Projeto Revalida
-
-## v0.3.0 — Foco 2025/1 e 2025/2
-
-### Alterado
-- Escopo operacional reduzido para as edições **2025/1 e 2025/2**.
-- Biblioteca passou a exibir cada edição em uma linha e somente as duas edições em foco.
-- Removidas do banco as 50 questões provisórias que não haviam sido conferidas contra o caderno oficial.
-- Registrado o gabarito definitivo oficial de 2025/1: 100 questões, com Q7 e Q23 anuladas.
-- Registrado o gabarito preliminar disponível de 2025/2 para as questões 61–100; o restante permanece pendente de confirmação.
-- Mantida a regra de que nenhuma questão é considerada validada apenas por ter um gabarito armazenado.
-- Mantidos no repositório os PDFs oficiais fornecidos para 2025/1 e 2025/2 em provas/2025/.
-
-### Regra de validação
-- Primeiro conferir **enunciado + alternativas + mídia** diretamente no caderno oficial.
-- Depois conferir o **gabarito definitivo** contra a fonte oficial.
-- Só então marcar a questão como validada.
-
-## v0.2.0 — Estrutura do Banco de Questões
-
-### Alterado
-- Projeto definido como independente do Raphix Lab.
-- Criado backup da versão anterior na branch `backup/antes-banco-questoes-2026-10-02`.
-- `questoes.js` passou a ser a fonte única das questões.
-- Corrigido o erro de sintaxe que impedia o carregamento do banco.
-- Separado o conteúdo futuro de treinamento do banco de questões.
-- Criado catálogo central de edições do Revalida.
-- Tags passaram a ser derivadas automaticamente dos metadados da questão.
-- Questões anuladas recebem automaticamente a tag `anulada`.
-- Removida a duplicação do banco que existia no `index.html`.
-- `index.html` passou a funcionar como biblioteca das edições.
-- `treino_revalida.html` passou a consultar exclusivamente `questoes.js`.
-- Adicionada validação automática com GitHub Actions.
-- Criada documentação de contexto para colaboração entre IAs.
-
-## v0.1.0 — Inicialização
-- Criação do repositório.
-- Estrutura inicial do projeto.
-- Preparação para GitHub Pages.
