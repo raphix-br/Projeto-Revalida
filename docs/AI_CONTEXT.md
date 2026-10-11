@@ -106,3 +106,11 @@ Esses módulos devem referenciar a questão pelo `id` estável.
 `index.html` → `fase1.html` → `treino_revalida.html` → `edicao.html?edicao=2025-1|2025-2` → `questao.html?edicao=...&numero=...`.
 
 A Fase 2 parte de `index.html` para `fase2.html`. O nome `Projeto Revalida` no cabeçalho de todas as páginas deve voltar à página inicial. Links internos devem ser relativos (`./arquivo.html`) para não depender de um caminho-base fixo do GitHub Pages. Antes de alterar a navegação, conferir todos os destinos e os PDFs originais citados por `questao.html`.
+
+
+## Requisitos de interface — v0.8.2
+- Todas as páginas usam cabeçalho fixo no topo; `Projeto Revalida` fica à direita e sempre leva a `./index.html`.
+- `index.html` é a página inicial com dois acessos principais: Fase 1 e Fase 2. `fase1.html` contém as ferramentas de treino; `fase2.html` informa que está em desenvolvimento.
+- A lista de questões mostra apenas números destacados de `01` a `100` e reserva o texto central para tags futuras; não exibir trecho do enunciado na lista.
+- Manter barra de rolagem visível e consistente.
+- `questoes.js` publica `window.REVALIDA_DATA` para evitar dependência exclusiva de bindings lexicais entre scripts. A lista e a página da questão devem ler o banco dessa API, com fallback legado.
