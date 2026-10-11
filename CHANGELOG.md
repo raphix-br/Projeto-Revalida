@@ -1,3 +1,10 @@
+## v0.8.2 — Navegação, cabeçalho e carregamento do banco
+- Cabeçalho fixo no topo, com o nome do projeto à direita e link explícito para `index.html`.
+- Barra de rolagem com estilo visível e consistente.
+- O banco de questões é exposto por `window.REVALIDA_DATA`; as páginas de lista e questão usam essa API e mantêm fallback compatível.
+- A lista exibe somente números em destaque (01–100) e espaço reservado para tags, sem trecho do enunciado.
+- Fase 2 permanece identificada como em desenvolvimento.
+
 ## v0.8.2 — Diagnóstico de carregamento do banco
 - A lista da edição agora mostra uma mensagem clara quando `questoes.js` não carrega ou quando a edição não possui dados, em vez de exibir 100 links vazios.
 - A página individual distingue falha no carregamento do banco de uma questão ainda não importada.
