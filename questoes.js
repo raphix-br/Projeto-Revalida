@@ -4084,10 +4084,23 @@ const treinamentos = [
 ];
 
 // Metadados derivados para evitar repetição dentro de cada questão.
+function inferirGrandeArea(q) {
+  if (q.area) return q.area;
+  const t = [q.enunciado, ...Object.values(q.alternativas || {})].join(" ").toLowerCase();
+  if (/\b(gestante|gestação|gravidez|obstétr|obstetr|parto|puérpera|puerpério|pré-natal|prenatal|menarca|menstruação|amenorreia|vulv|vagin|colo uterino|ovário|ovario|beta-hcg|sangramento vaginal|ginecol)\b/.test(t)) return "Ginecologia e Obstetrícia";
+  if (/\b(criança|crianças|recém-nascid|recem-nascid|lactente|menino|menina|pediatri|aleitamento|neonato|neonatal|escolar|adolescente|adolescentes|vacina do calendário infantil)\b/.test(t)) return "Pediatria";
+  if (/\b(epidemiologia|prevalência|incidência|rastreamento|notificação compulsória|vigilância epidemiológica|surto|cobertura vacinal|sensibilidade e especificidade|saúde coletiva|determinantes sociais|medicina de família|estudo de coorte|estudo caso-controle)\b/.test(t)) return "Medicina Preventiva";
+  if (/\b(p politrauma|politrauma|trauma|fratura|laparotomia|abdome agudo|apendicite|colecistite|hérnia|hernia|queimadura|suturar|sutura|osteossíntese|osteossintese|pneumotórax|pneumotorax|hemorragia traumática|cirurgia|pós-operatório|pos-operatorio|lesão uretral|lesão esplênica|lesao esplenica)\b/.test(t)) return "Cirurgia Geral";
+  return "Clínica Médica";
+}
 for (const q of questoes) {
   q.id = `${q.edicao.replace("/","-")}-${String(q.numero).padStart(3, "0")}`;
   const textoQuestao = [q.enunciado, ...Object.values(q.alternativas || {})].join(" ");
-  const mencionaImagem = q.temImagem === true || q.revisaoVisual === true || /imagem (?:a seguir|abaixo|acima)|figura (?:a seguir|abaixo|acima)|fotografia|gráfico (?:a seguir|abaixo|acima)|apresenta a seguinte (?:radiografia|fotografia|imagem)|observe (?:a imagem|a figura|o gráfico)|conforme (?:a imagem|a figura)/i.test(textoQuestao);
+  if (!q.area) {
+    q.area = inferirGrandeArea(q);
+    q.areaClassificacao = "automática — revisar";
+  }
+  const mencionaImagem = q.temImagem === true || q.revisaoVisual === true || /imagem (?:a seguir|abaixo|acima|apresentada)|figura (?:a seguir|abaixo|acima)|gráfico (?:a seguir|abaixo|acima)|apresenta a seguinte (?:radiografia|fotografia|imagem)|a seguinte radiografia|conforme (?:a imagem|a figura|o gráfico)|observe (?:a imagem|a figura|o gráfico)|radiografia (?:de tórax|de punho|de coluna).{0,80}(?:mostra|revela|evidencia)/i.test(textoQuestao);
   q.tags = [...new Set([q.area, q.grupo, q.subgrupo, q.tema, q.subtema, ...(mencionaImagem ? ["Imagem"] : []), ...(q.gabarito === "-" ? ["anulada"] : [])].filter(Boolean))];
   q.temImagem = mencionaImagem;
   q.tipo = "objetiva";
