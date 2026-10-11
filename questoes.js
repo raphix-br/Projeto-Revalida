@@ -4090,4 +4090,5 @@ for (const q of questoes) {
   q.tipo = "objetiva";
 }
 
+if (typeof window !== "undefined") window.REVALIDA_DATA = { FONTE_INEP, gabaritosOficiais, gabaritosPreliminares, edicoes, questoes, treinamentos };
 if (typeof module !== "undefined") module.exports = { FONTE_INEP, gabaritosOficiais, gabaritosPreliminares, edicoes, questoes, treinamentos };
