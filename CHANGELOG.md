@@ -36,3 +36,13 @@
 - Melhorados responsividade, contraste, espaçamento e estados de navegação.
 - Estrutura futura de classificação preparada em `questoes.js`.
 - Versão atualizada para **v0.7.0**.
+
+
+## v0.9.0 — Interface profissional e fluxo de questões
+- A página inicial apresenta o propósito da plataforma e uma prévia visual de entrar/criar perfil; a autenticação real ainda não está ativa.
+- Criado dashboard para selecionar Fase 1 ou Fase 2.
+- Padronizados favicon PJ, título do documento, marca no lado esquerdo e botão de perfil inativo no lado direito.
+- Questões agora usam alternativas selecionáveis e botão Confirmar; a correção visual só aparece após a confirmação.
+- Barra fixa inferior com Anterior, Confirmar e Avançar; removido o link para abrir o caderno oficial.
+- Criado painel de desempenho com indicadores, gráfico de barras e gráfico radar; respostas ficam apenas no armazenamento local do navegador.
+- Adicionada a tag automática Imagem com base em metadados e pistas textuais. A classificação visual ainda requer revisão humana para garantir cobertura completa.
