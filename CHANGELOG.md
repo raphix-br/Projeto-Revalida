@@ -1,3 +1,9 @@
+## v0.8.1 — Correção de caminhos e renderização
+- Links internos agora usam caminhos relativos, evitando falhas quando a plataforma é publicada em um caminho-base diferente.
+- O nome do projeto no cabeçalho continua levando à página inicial em todas as telas.
+- A página individual de questão aceita os campos atuais do banco e os nomes legados (`text`/`options`) como compatibilidade.
+- PDFs originais mantêm os caminhos relativos e foram conferidos no repositório.
+
 ## v0.8.0 — Fases e navegação revisada
 - Criada nova página inicial com opções Fase 1 e Fase 2.
 - Fase 1 encaminha à página de ferramentas de estudo existente; Fase 2 tem página própria em desenvolvimento.
