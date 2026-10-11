@@ -114,3 +114,13 @@ A Fase 2 parte de `index.html` para `fase2.html`. O nome `Projeto Revalida` no c
 - A lista de questões mostra apenas números destacados de `01` a `100` e reserva o texto central para tags futuras; não exibir trecho do enunciado na lista.
 - Manter barra de rolagem visível e consistente.
 - `questoes.js` publica `window.REVALIDA_DATA` para evitar dependência exclusiva de bindings lexicais entre scripts. A lista e a página da questão devem ler o banco dessa API, com fallback legado.
+
+
+## Requisitos de interface — v0.9.0
+- index.html é a apresentação do projeto e a prévia visual de autenticação. Login, criação de conta e Google não são funcionais até integrar um provedor seguro.
+- dashboard.html é a tela de seleção entre Fase 1 e Fase 2.
+- O cabeçalho deve manter a marca no lado esquerdo apontando para index.html e um botão de perfil inativo no lado direito.
+- questao.html não exibe o gabarito antes de Confirmar e não tem link para abrir o caderno oficial. A barra inferior fixa contém Anterior, Confirmar e Avançar.
+- Respostas corrigidas são guardadas no localStorage do navegador com a chave revalida-performance-v1. Não afirmar que existe conta ou sincronização.
+- desempenho.html contém indicadores, gráfico de barras e radar para as cinco grandes áreas. A qualidade do radar depende de classificar corretamente cada questão.
+- A tag Imagem é inferida por metadados e pistas no texto; revisar manualmente questões com recursos visuais para garantir que a marcação seja correta.
