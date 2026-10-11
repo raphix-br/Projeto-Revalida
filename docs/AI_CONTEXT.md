@@ -6,8 +6,12 @@ O GitHub é a fonte oficial do projeto. Antes de modificar qualquer coisa, ler e
 
 ## Arquitetura mínima
 
-- `index.html`: biblioteca das edições.
-- `treino_revalida.html`: consulta e visualização das questões.
+- `index.html`: página inicial com entrada para Fase 1 e Fase 2.
+- `fase1.html`: menu de ferramentas da prova objetiva.
+- `fase2.html`: página informativa da etapa prática, ainda em desenvolvimento.
+- `treino_revalida.html`: catálogo de edições disponíveis.
+- `edicao.html`: lista numerada de questões da edição selecionada.
+- `questao.html`: enunciado, alternativas, gabarito e navegação anterior/próxima.
 - `questoes.js`: única fonte de dados das questões e do catálogo de edições.
 - `README.md`: documentação curta do projeto.
 - `CHANGELOG.md`: histórico humano das mudanças.
@@ -95,3 +99,10 @@ Esses módulos devem referenciar a questão pelo `id` estável.
 - 2025/2: caderno disponível e gabarito preliminar disponível; não tratar como gabarito definitivo.
 - Não reconstruir enunciados por memória, resumo de terceiros ou inferência.
 - Se o PDF binário não puder ser lido por uma ferramenta, registrar a limitação em vez de inventar conteúdo.
+
+
+## Mapa de navegação atual
+
+`index.html` → `fase1.html` → `treino_revalida.html` → `edicao.html?edicao=2025-1|2025-2` → `questao.html?edicao=...&numero=...`.
+
+A Fase 2 parte de `index.html` para `fase2.html`. O nome `Projeto Revalida` no cabeçalho de todas as páginas deve voltar à página inicial. Links internos devem ser relativos (`./arquivo.html`) para não depender de um caminho-base fixo do GitHub Pages. Antes de alterar a navegação, conferir todos os destinos e os PDFs originais citados por `questao.html`.
