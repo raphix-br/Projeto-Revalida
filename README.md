@@ -55,3 +55,12 @@ Antes de editar o banco, consulte `docs/AI_CONTEXT.md`.
 ## Status
 
 **Em desenvolvimento — foco atual: Revalida 2025/1 e 2025/2.**
+
+
+## Interface, perfil e favicon
+A página inicial (index.html) contém a apresentação e uma prévia visual de login/criação de perfil. A autenticação ainda não está conectada: não são criadas contas e nenhum dado de login é enviado. O botão “Explorar sem entrar” leva a dashboard.html, onde se escolhe Fase 1 ou Fase 2.
+
+**Favicon** é o pequeno ícone do site na aba/favoritos. O elemento HTML <title> define o título da página mostrado na aba e usado como nome sugerido ao salvar nos favoritos.
+
+## Desempenho
+desempenho.html apresenta contadores, gráfico de barras e gráfico radar. As respostas confirmadas ficam em localStorage no navegador atual; não são vinculadas a uma conta nem sincronizadas entre dispositivos. A precisão por área depende da classificação pedagógica das questões, que ainda precisa ser revisada.
